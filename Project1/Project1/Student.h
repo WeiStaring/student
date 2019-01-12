@@ -35,7 +35,8 @@ class Graduate_a:public Graduate
 {
 public:
 	Graduate_a *pnext;
-	Graduate_a();
+	Graduate_a() {
+	}
 
 	void saveAcademicStudentData(Graduate_a *head);
 
@@ -90,3 +91,4 @@ private:
 	double tscore;	//总成绩
 	int pnum;		//项目数
 };
+
