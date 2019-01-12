@@ -10,12 +10,6 @@ typedef struct paper{
 	double score;		//论文成绩
 };
 
-typedef struct project {
-	//工程硕士项目
-	string name;	//项目名字
-	char level;		//项目等级(A,B,C)
-	double score;		//项目成绩
-};
 
 class Graduate {
 	//研究生基类
@@ -35,22 +29,113 @@ class Graduate_a:public Graduate
 {
 public:
 	Graduate_a *pnext;
-	Graduate_a();
+	Graduate_a() {
+		countAcademicNumber++;
+	}
+
+	~Graduate_a() {
+		countAcademicNumber--;
+	}
 
 	void saveAcademicStudentData(Graduate_a *head);
 
-	double calculatePaperScore();//计算论文分数
-	double calculateSumScore();//计算总成绩
+	double calculatePaperScore() {
+		//计算论文分数
+		int s = 0;
+		for (int i = 0; i < pnum; ++i) {
+			s += (p[i].level * 10 / 90) * 100;
+		}
+		pscore = s;
+		return s;
+	}
+
+	double calculateSumScore() {
+		//计算总成绩
+		tscore = socre * 0.7 + pscore * 0.3;
+		return tscore;
+	}
 
 	//重载函数
-	friend ostream& operator<<(ostream&, Graduate_a&);
-	friend istream& operator>>(istream&, Graduate_a&);
+	friend ostream& operator<<(ostream& output, Graduate_a& a) {
+		output << "学号:" << a.num << "\t姓名:" << a.name << "\t性别:" << a.sex << endl;
+		for (int i = 0; i < a.pnum; ++i) {
+			output << "论文" << (i + 1) << "名称:" << a.p[i].name << "该论文级别:" << a.p[i].level << "\t该论文成绩:" << a.p[i].score << endl;
+		}
+		output << "论文成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
+	}
+
+	friend istream& operator>>(istream& input, Graduate_a& astu) {
+
+		cout << "学号:";
+		input >> astu.num;
+		if (astu.num == "0")
+		{
+			return input;
+		}
+		cout << "姓名:";
+		input >> astu.name;
+		
+		cout << "性别(男输入m,女输入f):";
+		input >> astu.sex;
+		while (!(sex == 'm' || sex == 'f')) {
+			cerr << "性别输入错误，请重新输入:";
+			input >> astu.sex;
+		}
+		cout << "年龄:";
+		input >> astu.age;
+
+		cout << "课程成绩:";
+		input >> astu.score;
+
+		while (!(astu.score >= 0 || astu.score<=100))
+		{
+			cerr << "课程成绩输入有误，请重新输入!" << endl;
+			input >> astu.score;
+		}
+
+		cout << "专业:";
+		input >> astu.major;
+
+		cout << "发表论文篇数:" << endl;
+		input >> astu.pnum;
+
+		while (!(astu.pnum <= 3 && astu.pnum > 0))
+		{
+			cerr << "输入有误，论文篇数范围1 - 3" << endl;
+			input >> astu.pnum;
+		}
+
+		for (int i = 0; i < astu.pnum; ++i) {
+
+			cout << "论文"<<(i+1)<<":" << endl << "论文名称:";
+			input >> astu.p[i].name;
+
+			cout << "论文级别(1,2,3):";
+			input >> astu.p[i].level;
+			while (astu.p[i].level < 1 || astu.p[i].level>3) {
+				cerr << "论文级别输入错误，请重新输入:";
+				input >> astu.p[i].level;
+			}
+
+			cout << "论文分数(0-90):";
+			input >> astu.p[i].score;
+			while (astu.p[i].score < 0 || astu.p[i].score>90) {
+				cerr << "论文分数输入错误，请重新输入:";
+				input >> astu.p[i].score;
+			}
+		}
+		astu.calculatePaperScore();
+		astu.calculateSumScore();
+		return input;
+
+	}
+
 	//统计函数
 	static void statisticalData(Graduate_a*);
-	static float sumAcademicScore;//学术硕士全体总成绩
-	static int countAcademicNumber;//学术硕士总人数
-	static float averageAcademicScore;//学术硕士平均成绩
-	static int a[6];//学术硕士总分分段人数
+	static double sumAcademicScore = 0; // 学术硕士全体总成绩
+	static int countAcademicNumber=0;//学术硕士总人数
+	static double averageAcademicScore=0;//学术硕士平均成绩
+	static int a[6] = { 0,0,0,0,0,0 };//学术硕士总分分段人数
 
 
 private:
@@ -58,6 +143,7 @@ private:
 	paper p[3];		//论文
 	double tscore;	//总成绩
 	int pnum;		//论文篇数
+	double pscore;	//论文成绩
 };
 
 
@@ -66,26 +152,104 @@ class Graduate_e :public Graduate
 	//工程硕士
 public:
 	Graduate_e *pnext;
-	Graduate_e();
+	Graduate_e() {
+		countEngineeringNumber++;
+	}
+
+	~Graduate_e() {
+		countEngineeringNumber--;
+	}
 
 	void saveAcademicStudentData(Graduate_a *head);
 
-	double calculateEngineerScore();//计算项目分数
-	double calculateSumScore();//计算总成绩
+	double calculateEngineerScore() {
+		//计算项目分数
+		switch (p.second) {
+		case 'A':
+			pscore = 90; break;
+		case 'B':
+			pscore = 75; break;
+		case 'C':
+			pscore = 60; break;
+		default:
+			pscore = 0; break;
+		}
+
+		return pscore;
+	}
+
+	double calculateSumScore() {
+		//计算总成绩
+		tscore = (score + pscore)*0.5;
+	}
 
 	//重载函数
-	friend ostream& operator<<(ostream&, Graduate_e&);
-	friend istream& operator>>(istream&, Graduate_e&);
+	friend ostream& operator<<(ostream& output, Graduate_e& a) {
+		output << "学号:" << a.num << "\t姓名:" << a.name << "\t性别:" << a.sex << endl;
+		output << "项目名称:" << a.p.first << "项目级别" << a.p.second << endl;
+		output << "项目成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
+	}
+
+	friend istream& operator>>(istream& input, Graduate_e& a) {
+		cout << "学号:";
+		input >> a.num;
+		if (a.num == "0") {
+			return input;
+		}
+
+		cout << "姓名:";
+		input >> a.name;
+
+		cout << "性别(男输入m,女输入f):";
+		input >> a.sex;
+
+		while (!(sex == 'm' || sex == 'f')) {
+			cerr << "性别输入错误，请重新输入:";
+			input >> a.sex;
+		}
+
+		cout << "年龄:";
+		input >> a.age;
+
+		cout << "课程成绩:";
+		input >> a.score;
+
+		while (!(a.score >= 0 || a.score <= 100))
+		{
+			cerr << "课程成绩输入有误，请重新输入!" << endl;
+			input >> a.score;
+		}
+
+		cout << "领域:";
+		input >> a.area;
+
+
+		cout << "项目名称:";
+		input >> a.p.first;
+
+		cout << "项目级别(A,B,C):";
+		input >> a.p.second;
+		while (!(a.p.second == 'A' || a.p.second == 'B' || a.p.second == 'C')) {
+			cerr << "项目级别输入错误，请重新输入:";
+			input >> a.p.second;
+		}
+
+		a.calculateEngineerScore();
+		a.calculateSumScore();
+
+		return input;
+	}
+
 	//统计函数
 	static void statisticalData(Graduate_e*);
-	static double sumEngineeringScore;//工程硕士全体总成绩
-	static int countEngineeringNumber;//工程硕士总人数
-	static double averageEngineeringScore;//工程硕士平均成绩
-	static int e[6];//学术硕士总分分段人数
+	static double sumEngineeringScore=0;//工程硕士全体总成绩
+	static int countEngineeringNumber=0;//工程硕士总人数
+	static double averageEngineeringScore=0;//工程硕士平均成绩
+	static int e[6] = {0,0,0,0,0,0};//学术硕士总分分段人数
 
 private:
 	string area;	//领域
-	project p[3];	//项目
+	pair<string,char> p;	//项目
 	double tscore;	//总成绩
-	int pnum;		//项目数
+	double pscore;	//项目成绩
 };
