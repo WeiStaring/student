@@ -27,14 +27,14 @@ private:
 };
 
 
-class Gradute_a:public Graduate
+class Graduate_a:public Graduate
 {
 public:
-	Gradute_a *pnext;
-	Gradute_a();
+	Graduate_a *pnext;
+	Graduate_a();
 	double compute_score();
-	istream& operator>>(istream &input, Gradute_a &a);
-	void saveAcademicStudentData(Gradute_a *head);
+	istream& operator>>(istream &input, Graduate_a &a);
+	void saveAcademicStudentData(Graduate_a *head);
 private:
 	string major;	//专业
 	paper p[3];		//论文
@@ -43,15 +43,15 @@ private:
 };
 
 
-class Gradute_e :public Graduate
+class Graduate_e :public Graduate
 {
 	//工程硕士
 public:
-	Gradute_e *pnext;
-	Gradute_e();
+	Graduate_e *pnext;
+	Graduate_e();
 	double compute_score();
-	istream& operator>>(istream &input, Gradute_e &e);
-	void saveEngineerStudentData(Gradute_a *head);
+	istream& operator>>(istream &input, Graduate_e &e);
+	void saveEngineerStudentData(Graduate_e *head);
 
 private:
 	string area;	//领域
