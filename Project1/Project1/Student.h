@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include<string>
-#include<string.h>
+#include<cstring>
 using namespace std;
 class Graduate {
 private:
