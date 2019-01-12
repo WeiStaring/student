@@ -123,6 +123,9 @@
   <ItemGroup>
     <Text Include="guide.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="统计函数.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
