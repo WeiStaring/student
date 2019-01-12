@@ -34,8 +34,6 @@ protected:
 class Graduate_a:public Graduate
 {
 public:
-	static float SumScoreOf_Graduate_a;
-	static int numOf_Graduate;
 	Graduate_a *pnext;
 	Graduate_a();
 
@@ -47,12 +45,13 @@ public:
 	//重载函数
 	friend ostream& operator<<(ostream&, Graduate_a&);
 	friend istream& operator>>(istream&, Graduate_a&);
+
 	//统计函数
 	static void statisticalData(Graduate_a*);
-	static float sumAcademicScore;//学术硕士全体总成绩
-	static int countAcademicNumber;//学术硕士总人数
-	static float averageAcademicScore;//学术硕士平均成绩
-	static int a[6];//学术硕士总分分段人数
+	static float sumAcademicScore;						//学术硕士全体总成绩
+	static int countAcademicNumber;						//学术硕士总人数
+	static float averageAcademicScore;					//学术硕士平均成绩
+	static int a[6];									//学术硕士总分分段人数
 
 
 private:
