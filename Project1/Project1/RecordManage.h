@@ -3,7 +3,25 @@
 #include"Student.h"
 using namespace std;
 
+void firstInputData() {
+	bool flag;
+	cout << "正在输入数据，是否继续？yes:1,no:0" << endl;
+	cin >> flag;
+	if (!flag)
+		return;
+	cout << "请输入数据" << endl;
+	while (flag) {
+		Graduate_a *q;
+		Graduate_a *p = new Graduate_a;
+		cin >> *p;
 
+		cout << "继续？yes：1，no：0"<<endl;
+		cin >> flag;
+	}
+}
+void saveStudentData() {
+
+}
 //学术类研究生普通函数的定义
 Graduate_a* seekAcademicData(Graduate_a *head)//查找某个学术研究生数据
 {
@@ -140,7 +158,7 @@ Graduate_a* insertAcademicData(Graduate_a *head)//插入某个学术研究生数据
 	cout << "录入成功！" << endl;
 	cout << "请输入插入在哪个数据之后？" << endl;
 	//找到要插入的人
-	q = seekAcademicData(aHead);
+	q = seekAcademicData(Graduate_a::aHead);
 	p->pnext = q->pnext;
 	q->pnext = p;
 	return head;
@@ -246,7 +264,7 @@ void printAcademicData(Graduate_a *head)//输出学术研究生数据
 void modifyAcademicData()//修改学术研究生的数据
 {
 	Graduate_a *p, *q;
-	p = seekAcademicData(Graduate::aHead);
+	p = seekAcademicData(Graduate_a::aHead);
 	q = new Graduate_a;
 	q->pnext = p->pnext;
 	if (q == NULL)

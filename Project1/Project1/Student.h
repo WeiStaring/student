@@ -35,7 +35,20 @@ class Graduate_a:public Graduate
 {
 public:
 	Graduate_a *pnext;
+	static Graduate_a *aHead;
 	Graduate_a() {
+		if (!aHead)
+		{
+			cin >> *this;
+			aHead = this;
+		}
+		else {
+			Graduate_a *tmp;
+			tmp = aHead;
+			while (tmp->pnext)
+				tmp = tmp->pnext;
+			tmp->pnext = this;
+		}
 	}
 
 	void saveAcademicStudentData(Graduate_a *head);
