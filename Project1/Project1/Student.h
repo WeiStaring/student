@@ -30,6 +30,8 @@ private:
 class Graduate_a:public Graduate
 {
 public:
+	static float SumScoreOf_Graduate_a;
+	static int numOf_Graduate;
 	Graduate_a *pnext;
 	Graduate_a();
 	double compute_score();
