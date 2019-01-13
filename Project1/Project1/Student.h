@@ -51,7 +51,7 @@ public:
 
 	double calculateSumScore() {
 		//计算总成绩
-		tscore = socre * 0.7 + pscore * 0.3;
+		tscore = score * 0.7 + pscore * 0.3;
 		return tscore;
 	}
 
