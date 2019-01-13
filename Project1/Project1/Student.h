@@ -14,6 +14,7 @@ typedef struct paper{
 class Graduate {
 	//研究生基类
 public:
+	int 
 	string getNum()const { return num; }//获取学号
 	string getName()const { return name; }//获取姓名
 protected:
