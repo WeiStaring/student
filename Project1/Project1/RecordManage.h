@@ -21,6 +21,7 @@ void firstInputData(Graduate_a* head) {
 		Graduate_a *p = new Graduate_a;
 		cin >> *p;
 		q->pnext = p;
+		q = p;
 		cout << "¼ÌÐø£¿yes£º1£¬no£º0" << endl;
 		cin >> flag;
 	}
