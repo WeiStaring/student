@@ -28,6 +28,30 @@ void firstInputData(Graduate_a* head) {
 	}
 }
 
+void firstInputData(Graduate_e* head) {
+	int flag;
+	cout << "正在输入数据，是否继续？yes:1,no:0" << endl;
+	cin >> flag;
+	if (!flag)
+		return;
+	cout << "请输入数据" << endl;
+
+	Graduate_e *q;
+	q = head;
+	while (q->pnext)
+		q = q->pnext;
+
+	while (flag) {
+
+		Graduate_e *p = new Graduate_e;
+		cin >> *p;
+		q->pnext = p;
+		q = p;
+		cout << "继续？yes：1，no：0" << endl;
+		cin >> flag;
+	}
+}
+
 
 void saveStudentData(Graduate_a* head) {
 	//建立一个txt文本文件

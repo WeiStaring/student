@@ -5,7 +5,7 @@
 using namespace std;
 
 
-typedef struct paper{
+typedef struct{
 	//学术硕士论文
 	string name;	//论文名字
 	int level;		//论文等级(1,2,3)
@@ -185,6 +185,7 @@ public:
 	double calculateSumScore() {
 		//计算总成绩
 		tscore = (score + pscore)*0.5;
+		return tscore;
 	}
 
 	//重载函数
