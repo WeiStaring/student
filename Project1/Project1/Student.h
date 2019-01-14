@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include<string>
+#include<string.h>
+#include<iostream>
 using namespace std;
 
 
@@ -29,7 +31,9 @@ class Graduate_a:public Graduate
 {
 public:
 	Graduate_a *pnext;
+	static Graduate_a *aHead;
 	Graduate_a() {
+		pnext = NULL;
 		countAcademicNumber++;
 	}
 
@@ -129,15 +133,9 @@ public:
 		return input;
 
 	}
-
 	//统计函数
 	static void statisticalData(Graduate_a*);
-	static double sumAcademicScore = 0; // 学术硕士全体总成绩
-	static int countAcademicNumber=0;//学术硕士总人数
-	static double averageAcademicScore=0;//学术硕士平均成绩
-	static int a[6] = { 0,0,0,0,0,0 };//学术硕士总分分段人数
-
-
+	
 private:
 	string major;	//专业
 	paper p[3];		//论文
@@ -152,7 +150,9 @@ class Graduate_e :public Graduate
 	//工程硕士
 public:
 	Graduate_e *pnext;
+	static Graduate_e *eHead;
 	Graduate_e() {
+		pnext = NULL;
 		countEngineeringNumber++;
 	}
 
@@ -239,17 +239,27 @@ public:
 
 		return input;
 	}
-
 	//统计函数
 	static void statisticalData(Graduate_e*);
-	static double sumEngineeringScore=0;//工程硕士全体总成绩
-	static int countEngineeringNumber=0;//工程硕士总人数
-	static double averageEngineeringScore=0;//工程硕士平均成绩
-	static int e[6] = {0,0,0,0,0,0};//学术硕士总分分段人数
 
 private:
 	string area;	//领域
 	pair<string,char> p;	//项目
 	double tscore;	//总成绩
 	double pscore;	//项目成绩
+
 };
+
+static double sumAcademicScore = 0; // 学术硕士全体总成绩
+static int countAcademicNumber = 0;//学术硕士总人数
+static double averageAcademicScore = 0;//学术硕士平均成绩
+static int a[6] = { 0,0,0,0,0,0 };//学术硕士总分分段人数
+
+static double sumEngineeringScore = 0;//工程硕士全体总成绩
+static int countEngineeringNumber = 0;//工程硕士总人数
+static double averageEngineeringScore = 0;//工程硕士平均成绩
+static int e[6] = { 0,0,0,0,0,0 };//学术硕士总分分段人数
+
+Graduate_a *aHead = new Graduate_a();  //Graduate_a的链表头结点，头结点的下一个为第一个记录
+Graduate_e *eHead = new Graduate_e();  //Graduate_e的链表头结点，头结点的下一个为第一个记录
+

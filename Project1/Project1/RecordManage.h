@@ -3,25 +3,69 @@
 #include"Student.h"
 using namespace std;
 
-void firstInputData() {
-	bool flag;
+void firstInputData(Graduate_a* head) {
+	int flag;
 	cout << "正在输入数据，是否继续？yes:1,no:0" << endl;
 	cin >> flag;
 	if (!flag)
 		return;
 	cout << "请输入数据" << endl;
+
+	Graduate_a *q;
+	q = head;
+	while (q->pnext)
+		q = q->pnext;
+
 	while (flag) {
-		Graduate_a *q;
+
 		Graduate_a *p = new Graduate_a;
 		cin >> *p;
-
-		cout << "继续？yes：1，no：0"<<endl;
+		q->pnext = p;
+		q = p;
+		cout << "继续？yes：1，no：0" << endl;
 		cin >> flag;
 	}
 }
-void saveStudentData() {
 
+
+void saveStudentData(Graduate_a* head) {
+	//建立一个txt文本文件
+	Graduate_a *p = head->pnext;
+	ofstream outfile("AcademicStudentData.txt", ios::out);
+	if (!outfile)
+	{
+		cerr << "文件打开失败!" << endl;
+		cerr << "错误代码0x125158" << endl;
+		cerr << "请联系管理员处理" << endl;
+		system("pause");
+		exit(0);
+	}
+	while (p != NULL)
+	{
+		outfile << *p;
+		p = p->pnext;
+	}
+	outfile.close();
+	//建立一个dat二进制文件，方便以后读取
+	p = head->pnext;//重新赋值
+	ofstream outfiled("AcademicStudentData.dat", ios::out | ios::binary);
+	if (!outfiled)
+	{
+		cerr << "文件打开失败!" << endl;
+		cerr << "错误代码0x125158" << endl;
+		cerr << "请联系管理员处理" << endl;
+		system("pause");
+		exit(0);
+	}
+	while (p != NULL)
+	{
+		outfiled.write((char*)p, sizeof(*p));
+		p = p->pnext;
+	}
+	outfiled.close();
+	return;
 }
+
 //学术类研究生普通函数的定义
 Graduate_a* seekAcademicData(Graduate_a *head)//查找某个学术研究生数据
 {
