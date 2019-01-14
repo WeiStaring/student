@@ -1,36 +1,36 @@
 #pragma once
-#include"Student.h"
-#include<cstdlib>
+#include<iostream>
+#include<string.h>
+#include<string>
+using namespace std;
 
-void addStudentData()//menu选项1对应函数
-{
-	cout << "***************************************************" << endl;
-	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
-	cout << "*" << "                1.学术研究生信息录入                " << "*" << endl;
-	cout << "*" << "                2.工程研究生信息录入                 " << "*" << endl;
-	cout << "****************************************************" << endl;
-	int choice;
-	cin >> choice;
-	if (choice == 1)
-		aHead->saveAcademicStudentData();
-	else
-		eHead->saveEngineerStudentData();
+void addStudentData() {
+
 }
+void insertData() {
 
-/*
-void insertData() //menu选项2函数
-{
-	cout << "***************************************************" << endl;
-	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
-	cout << "*" << "                1.学术研究生信息插入                " << "*" << endl;
-	cout << "*" << "                2.工程研究生信息插入                 " << "*" << endl;
-	cout << "****************************************************" << endl;
-	int choice;
-	cin >> choice;
-	
-}*/
+}
+void delData() {
 
-void 
+}
+void printData() {
+
+}
+void modifyData() {
+
+}
+void seekGraduateStudent() {
+
+}
+void statisticalStudentData() {
+
+}
+void initSystem() {
+
+}
+void exitSystem() {
+
+};
 
 void menu()//菜单界面
 {
@@ -38,7 +38,7 @@ void menu()//菜单界面
 loop:
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
-	cout << "*" << "                1.研究生信息录入                " << "*" << endl;
+	cout << "*" << "                1.研究生信息录入*                " << "*" << endl;
 	cout << "*" << "                2.研究生信息插入                 " << "*" << endl;
 	cout << "*" << "                3.研究生信息删除                 " << "*" << endl;
 	cout << "*" << "                4.研究生信息输出                 " << "*" << endl;
