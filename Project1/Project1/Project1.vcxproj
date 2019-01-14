@@ -117,7 +117,8 @@
   <ItemGroup>
     <ClInclude Include="FileManage.h" />
     <ClInclude Include="menu.h" />
-    <ClInclude Include="RecordManage.h" />
+    <ClInclude Include="RecordA.h" />
+    <ClInclude Include="RecordE.h" />
     <ClInclude Include="Statistics.h" />
     <ClInclude Include="Student.h" />
   </ItemGroup>
