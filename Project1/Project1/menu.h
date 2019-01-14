@@ -2,7 +2,7 @@
 #include<iostream>
 #include<cstring>
 #include<string>
-#include"RecordManage.h"
+#include"RecordA.h"
 using namespace std;
 
 void addStudentData()//menu选项1对应函数
@@ -16,14 +16,16 @@ void addStudentData()//menu选项1对应函数
 	cin >> choice;
 	if (choice == 1)
 		firstInputData(Graduate_a::aHead);
+	else
+		firstInputData(Graduate_e::eHead);
 }
 
 
 void insertData() {	//menu选项2函数
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
-	cout << "*" << "                1.学术研究生信息录入                " << "*" << endl;
-	cout << "*" << "                2.工程研究生信息录入                 " << "*" << endl;
+	cout << "*" << "                1.学术研究生信息插入                " << "*" << endl;
+	cout << "*" << "                2.工程研究生信息插入                 " << "*" << endl;
 	cout << "****************************************************" << endl;
 	int choice;
 	cin >> choice;

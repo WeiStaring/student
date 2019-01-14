@@ -185,6 +185,7 @@ public:
 	double calculateSumScore() {
 		//计算总成绩
 		tscore = (score + pscore)*0.5;
+		return tscore;
 	}
 
 	//重载函数
