@@ -14,7 +14,6 @@ typedef struct paper{
 class Graduate {
 	//研究生基类
 public:
-	int 
 	string getNum()const { return num; }//获取学号
 	string getName()const { return name; }//获取姓名
 protected:
@@ -49,7 +48,7 @@ public:
 		pscore = s;
 		return s;
 	}
-
+	void Bsort(Graduate_a *head);
 	double calculateSumScore() {
 		//计算总成绩
 		tscore = score * 0.7 + pscore * 0.3;
