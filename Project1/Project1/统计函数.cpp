@@ -63,15 +63,32 @@ void Graduate_a::statisticalData(Graduate_a *head){
 	return;
 }
 
-int Graduate_a::sort(Graduate_a *head) {
+void Graduate_a::Bsort(Graduate_a *head) {
 	int min=0;
-	if (head->pnext == NULL)
-	{
+	if (head->pnext == NULL){
 		cerr << "错误0x456121" << endl;
 		cerr << "请联系管理员解决（链表中无数据）" << endl;
 		system("pause");
 		exit(0);
 	}
-	Graduate_a *p = head->pnext;
-
+	//=============冒泡排序====================
+	Graduate_a *head_1 = head->pnext;
+	Graduate_a *pre, *cur, *next, *end, *temp;
+	end = NULL;
+	//从链表头开始将较大值往后沉
+	while (head_1->pnext != end)
+	{
+		for (pre = head_1, cur = pre->pnext, next = cur->pnext; next != end; pre = pre->pnext, cur = cur->pnext, next = next->pnext){
+			//相邻的节点比较
+			if (cur->tscore < next->tscore){
+				cur->pnext = next->pnext;
+				pre->pnext = next;
+				next->pnext = cur;
+				temp = next;
+				next = cur;
+				cur = temp;
+			}
+		}
+		end = cur;
+	}
 }
