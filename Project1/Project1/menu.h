@@ -1,41 +1,85 @@
 #pragma once
 #include<iostream>
-#include<string.h>
+#include<cstring>
 #include<string>
-#include"RecordManage.h"
 using namespace std;
 
-void addStudentData() {
-	bool flag;
-	cout << "学术：1，工程0" << endl;
-	cin >> flag;
-	if (flag)
-		firstInputData(Graduate_a::aHead);
-
+void addStudentData()//menu选项1对应函数
+{
+	cout << "***************************************************" << endl;
+	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
+	cout << "*" << "                1.学术研究生信息录入                " << "*" << endl;
+	cout << "*" << "                2.工程研究生信息录入                 " << "*" << endl;
+	cout << "****************************************************" << endl;
+	int choice;
+	cin >> choice;
+	if (choice == 1)
+		aHead->saveAcademicStudentData();
+	else
+		eHead->saveEngineerStudentData();
 }
-void insertData() {
 
-}
-void delData() {
 
+void insertData() {	//menu选项2函数
+	cout << "***************************************************" << endl;
+	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
+	cout << "*" << "                1.学术研究生信息录入                " << "*" << endl;
+	cout << "*" << "                2.工程研究生信息录入                 " << "*" << endl;
+	cout << "****************************************************" << endl;
+	int choice;
+	cin >> choice;
+	//if (choice == 1)
+		//aHead->saveAcademicStudentData();
+	//else
+		//eHead->saveEngineerStudentData();
 }
+
+
+void delData() {//menu选项3函数
+	cout << "***************************************************" << endl;
+	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
+	cout << "*" << "                1.学术研究生信息删除                " << "*" << endl;
+	cout << "*" << "                2.工程研究生信息删除                 " << "*" << endl;
+	cout << "****************************************************" << endl;
+	int choice;
+	cin >> choice;
+	//暂时没写if else
+}
+
+
 void printData() {
 
 }
-void modifyData() {
 
+
+void modifyData() {
+	cout << "***************************************************" << endl;
+	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
+	cout << "*" << "                1.学术研究生信息修改                " << "*" << endl;
+	cout << "*" << "                2.工程研究生信息修改                 " << "*" << endl;
+	cout << "****************************************************" << endl;
+	int choice;
+	cin >> choice;
+	//暂时没写if else
 }
 void seekGraduateStudent() {
-
+	cout << "***************************************************" << endl;
+	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
+	cout << "*" << "                1.学术研究生信息查找               " << "*" << endl;
+	cout << "*" << "                2.工程研究生信息查找                 " << "*" << endl;
+	cout << "****************************************************" << endl;
+	int choice;
+	cin >> choice;
+	//暂时没写if else
 }
 void statisticalStudentData() {
 
 }
 void initSystem() {
-
+	system("cls");
 }
 void exitSystem() {
-	cout << "感谢您的使用" << endl;
+	system("pause");
 	exit(0);
 };
 

@@ -41,7 +41,7 @@ public:
 		countAcademicNumber--;
 	}
 
-	void saveAcademicStudentData(Graduate_a *head);
+	void saveAcademicStudentData();
 
 	double calculatePaperScore() {
 		//计算论文分数
@@ -164,7 +164,7 @@ public:
 		countEngineeringNumber--;
 	}
 
-	void saveAcademicStudentData(Graduate_a *head);
+	void saveEngineerStudentData();
 
 	double calculateEngineerScore() {
 		//计算项目分数
