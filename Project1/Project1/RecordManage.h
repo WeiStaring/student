@@ -65,9 +65,9 @@ void saveStudentData(Graduate_a* head) {
 	outfiled.close();
 	return;
 }
-
 //学术类研究生普通函数的定义
-Graduate_a* seekAcademicData(Graduate_a *head)//查找某个学术研究生数据
+//查找某个学术研究生数据
+Graduate_a* seekAcademicData(Graduate_a *head)
 {
 	if (head->pnext == NULL)//判断缓存中是否有数据
 	{
@@ -140,41 +140,38 @@ Graduate_a* inputAcademicData(Graduate_a *head)
 		system("pause");
 		exit(0);
 	}
-	cout << "开始录入数据（学号为零时结束）" << endl;
+	cout << "开始录入数据（学号为空时结束）" << endl;
 	cin >> *p;
 	cout << "录入成功！" << endl;
 	int i = 1;
-
-	while (p->getNum() != "")
+	try
 	{
-		if (i == 1)
+		while (p->getNum() != "0")
 		{
-			head->pnext = p;
+			if (i == 1)
+				head->pnext = p;
+			else
+				q->pnext = p;
+			q = p;
+			p = new Graduate_a;
+			/*if (p == NULL)//申请内存失败操作
+			{
+				cerr << "错误代码：0x123457！" << endl;
+				cerr << "异常错误！（请上报管理员处理）" << endl;
+				system("pause");
+				exit(0);
+			}*/
+			cin >> *p;
+			if (p->getNum() != "")
+				cout << "录入成功！" << endl;
+			else
+				cout << "录入结束!" << endl;
+			i++;
 		}
-		else
-		{
-			q->pnext = p;
-		}
-		q = p;
-		p = new Graduate_a;
-		if (p == NULL)//申请内存失败操作
-		{
-			cerr << "错误代码：0x123457！" << endl;
-			cerr << "异常错误！（请上报管理员处理）" << endl;
-			system("pause");
-			exit(0);
-		}
-		cin >> *p;
-		p->getNum();
-		if (p->getNum() != "")
-		{
-			cout << "录入成功！" << endl;
-		}
-		else
-		{
-			cout << "录入结束!" << endl;
-		}
-		i++;
+	}
+	catch (const std::exception& e)
+	{
+		cerr << "error" << endl;
 	}
 	q->pnext = NULL;
 	return head;

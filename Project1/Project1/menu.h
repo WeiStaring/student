@@ -2,6 +2,7 @@
 #include<iostream>
 #include<cstring>
 #include<string>
+#include"RecordManage.h"
 using namespace std;
 
 void addStudentData()//menu选项1对应函数
@@ -14,9 +15,7 @@ void addStudentData()//menu选项1对应函数
 	int choice;
 	cin >> choice;
 	if (choice == 1)
-		aHead->saveAcademicStudentData();
-	else
-		eHead->saveEngineerStudentData();
+		firstInputData(Graduate_a::aHead);
 }
 
 
@@ -44,6 +43,8 @@ void delData() {//menu选项3函数
 	int choice;
 	cin >> choice;
 	//暂时没写if else
+	if (choice)
+		delAcademicData(Graduate_a::aHead);
 }
 
 
@@ -71,6 +72,13 @@ void seekGraduateStudent() {
 	int choice;
 	cin >> choice;
 	//暂时没写if else
+	Graduate_a *p;
+	if (choice) {
+		p = seekAcademicData(Graduate_a::aHead);
+		if (p)
+			cout << *p;
+	}
+		
 }
 void statisticalStudentData() {
 
