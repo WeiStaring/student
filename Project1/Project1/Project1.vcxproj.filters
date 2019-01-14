@@ -21,13 +21,16 @@
     <ClInclude Include="Statistics.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="RecordManage.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
     <ClInclude Include="FileManage.h">
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="menu.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordA.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordE.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>

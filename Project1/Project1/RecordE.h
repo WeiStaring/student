@@ -1,4 +1,5 @@
 #pragma once
+#pragma once
 #include<iostream>
 #include<fstream>
 #include"Student.h"
@@ -77,14 +78,15 @@ Graduate_a* seekAcademicData(Graduate_a *head)//查找某个学术研究生数据
 		system("pause");
 		exit(0);
 	}
-loop:
-	cout << "学号（1）， 姓名（2）？" << endl;
 	int i = 0;
-	cin >> i;
-	if (!(i == 1 || i == 2))
-	{
-		cerr << "输入有误，请重新输入！" << endl;
-		goto loop;
+	for (;;) {
+		cout << "学号（1）， 姓名（2）？" << endl;
+		cin >> i;
+		if (!(i == 1 || i == 2))
+		{
+			cerr << "输入有误，请重新输入！" << endl;
+		}
+		else break;
 	}
 	Graduate_a *p = head->pnext;
 	string targetNum;
@@ -218,14 +220,15 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 		exit(0);
 	}
 	Graduate_a *p, *q;
-loop:
-	cout << "学号（1）， 姓名（2）？" << endl;
 	int i = 0;
-	cin >> i;
-	if (!(i == 1 || i == 2))
-	{
-		cerr << "输入有误，请重新输入！" << endl;
-		goto loop;
+	for (;;) {
+		cout << "学号（1）， 姓名（2）？" << endl;
+		cin >> i;
+		if (!(i == 1 || i == 2))
+		{
+			cerr << "输入有误，请重新输入！" << endl;
+		}
+		break;
 	}
 	p = head->pnext;
 	q = head;
@@ -234,33 +237,35 @@ loop:
 	switch (i)
 	{
 	case 1:
-	loopnu:
-		cout << "请输入学号：" << endl;
-		cin >> targetNum;
-		while (p->getNum() != targetNum)
-		{
-			q = p;
-			p = p->pnext;
-		}
-		if (p == NULL)
-		{
-			cerr << "没有这个数据！请重新输入！" << endl;
-			goto loopnu;
+		for (;;) {
+			cout << "请输入学号：" << endl;
+			cin >> targetNum;
+			while (p->getNum() != targetNum)
+			{
+				q = p;
+				p = p->pnext;
+			}
+			if (p == NULL)
+			{
+				cerr << "没有这个数据！请重新输入！" << endl;
+			}
+			else break;
 		}
 		break;
 	case 2:
-	loopna:
-		cout << "请输入姓名：" << endl;
-		cin >> targetName;
-		while (p->getName() != targetName)
-		{
-			q = p;
-			p = p->pnext;
-		}
-		if (p == NULL)
-		{
-			cerr << "没有这个数据！请重新输入！" << endl;
-			goto loopna;
+		for (;;) {
+			cout << "请输入姓名：" << endl;
+			cin >> targetName;
+			while (p->getName() != targetName)
+			{
+				q = p;
+				p = p->pnext;
+			}
+			if (p == NULL)
+			{
+				cerr << "没有这个数据！请重新输入！" << endl;
+			}
+			else break;
 		}
 		break;
 
@@ -271,21 +276,23 @@ loop:
 		exit(0);
 	}
 	i = 0;
-loopq:
-	cout << "是否确定删除？是（1）， 否（2）" << endl;
-	cin >> i;
-	if (i == 1)
-	{
-		q->pnext = p->pnext;
-	}
-	else if (i == 2)
-	{
-		cerr << "取消成功！" << endl;
-	}
-	else
-	{
-		cout << "输入有误，请重新输入！" << endl;
-		goto loopq;
+	for (;;) {
+		cout << "是否确定删除？是（1）， 否（2）" << endl;
+		cin >> i;
+		if (i == 1)
+		{
+			q->pnext = p->pnext;
+			break;
+		}
+		else if (i == 2)
+		{
+			cerr << "取消成功！" << endl;
+			break;
+		}
+		else
+		{
+			cout << "输入有误，请重新输入！" << endl;
+		}
 	}
 	return head;
 }
@@ -321,23 +328,24 @@ void modifyAcademicData()//修改学术研究生的数据
 	}
 	cin >> *q;
 	int i = 0;
-loop:
-	cout << "是否确定修改 是（1）， 否（2）？" << endl;
-	cin >> i;
-	if (i == 1)
-	{
-		*p = *q;
-		cout << "修改成功" << endl;
-	}
-	else if (i == 2)
-	{
-		cout << "取消成功！" << endl;
-		delete q;
-	}
-	else
-	{
-		cerr << "输入有误， 请重新输入！" << endl;
-		goto loop;
+	for (;;) {
+		cout << "是否确定修改 是（1）， 否（2）？" << endl;
+		cin >> i;
+		if (i == 1)
+		{
+			*p = *q;
+			cout << "修改成功" << endl;
+			break;
+		}
+		else if (i == 2)
+		{
+			cout << "取消成功！" << endl;
+			delete q;
+			break;
+		}
+		else {
+			cerr << "输入有误， 请重新输入！" << endl;
+		}
 	}
 	return;
 }

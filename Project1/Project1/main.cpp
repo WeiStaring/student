@@ -19,7 +19,7 @@ Graduate_e *eHead = new Graduate_e();  //Graduate_eµÄÁ´±íÍ·½áµã£¬Í·½áµãµÄÏÂÒ»¸öÎ
 int main()
 {
 	welcome();
-	menu();
+	
 
 	system("pause");
 	return 0;
