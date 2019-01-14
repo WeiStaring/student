@@ -2,9 +2,15 @@
 #include<iostream>
 #include<string.h>
 #include<string>
+#include"RecordManage.h"
 using namespace std;
 
 void addStudentData() {
+	bool flag;
+	cout << "学术：1，工程0" << endl;
+	cin >> flag;
+	if (flag)
+		firstInputData(Graduate_a::aHead);
 
 }
 void insertData() {
@@ -29,7 +35,8 @@ void initSystem() {
 
 }
 void exitSystem() {
-
+	cout << "感谢您的使用" << endl;
+	exit(0);
 };
 
 void menu()//菜单界面
