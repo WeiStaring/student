@@ -5,9 +5,6 @@
 
 using namespace std;
 
-
-
-double avrScoreOf_Graduate_a = 0.0;
 //统计函数
 void Graduate_a::statisticalData(Graduate_a *head){
 	if (head->pnext == NULL)
@@ -24,27 +21,27 @@ void Graduate_a::statisticalData(Graduate_a *head){
 		sumAcademicScore = (double)(sumAcademicScore + p->tscore);
 		if (fabs((float)(p->tscore - 100.0)) < 0.00001)//注意说明
 		{
-			Graduate_a::a[0]++;
+			a[0]++;
 		}
 		else if (p->tscore >= 90.0000 && p->tscore <= 99.0000)
 		{
-			Graduate_a::a[1]++;
+			a[1]++;
 		}
 		else if (p->tscore >= 80.0000 && p->tscore <= 89.0000)
 		{
-			Graduate_a::a[2]++;
+			a[2]++;
 		}
 		else if (p->tscore >= 70.0000 && p->tscore <= 79.0000)
 		{
-			Graduate_a::a[3]++;
+			a[3]++;
 		}
 		else if (p->tscore >= 60.0000 && p->tscore <= 69.0000)
 		{
-			Graduate_a::a[4]++;
+			a[4]++;
 		}
 		else if (p->tscore < 60.0000)
 		{
-			Graduate_a::a[5]++;
+			a[5]++;
 		}
 		p = p->pnext;
 	}
@@ -70,6 +67,7 @@ void Graduate_a::Bsort(Graduate_a *head) {
 		system("pause");
 		exit(0);
 	}
+	
 	//=============冒泡排序====================
 	Graduate_a *head_1 = head->pnext;
 	Graduate_a *pre, *cur, *next, *end, *temp;
