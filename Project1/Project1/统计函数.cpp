@@ -5,10 +5,6 @@
 
 using namespace std;
 
-
-
-double avrScoreOf_Graduate_a = 0.0;
-int a[6] = { 0,0,0,0,0,0 };
 //Í³¼Æº¯Êý
 void Graduate_a::statisticalData(Graduate_a *head){
 	if (head->pnext == NULL)
@@ -71,6 +67,7 @@ void Graduate_a::Bsort(Graduate_a *head) {
 		system("pause");
 		exit(0);
 	}
+	
 	//=============Ã°ÅÝÅÅÐò====================
 	Graduate_a *head_1 = head->pnext;
 	Graduate_a *pre, *cur, *next, *end, *temp;
