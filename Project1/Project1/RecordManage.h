@@ -29,9 +29,9 @@ void firstInputData(Graduate_a* head) {
 }
 
 
-void saveStudentData(Graduate_a* head) {
+void saveStudentData(Graduate_e* head) {
 	//建立一个txt文本文件
-	Graduate_a *p = head->pnext;
+	Graduate_e *p = head->pnext;
 	ofstream outfile("AcademicStudentData.txt", ios::out);
 	if (!outfile)
 	{
