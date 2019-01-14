@@ -81,7 +81,7 @@ public:
 		
 		cout << "性别(男输入m,女输入f):";
 		input >> astu.sex;
-		while (!(sex == 'm' || sex == 'f')) {
+		while (!(astu.sex == 'm' || astu.sex == 'f')) {
 			cerr << "性别输入错误，请重新输入:";
 			input >> astu.sex;
 		}
@@ -135,7 +135,10 @@ public:
 	}
 	//统计函数
 	static void statisticalData(Graduate_a*);
-	
+	static double sumAcademicScore; // 学术硕士全体总成绩
+	static int countAcademicNumber;//学术硕士总人数
+	static double averageAcademicScore;//学术硕士平均成绩
+	static int a[6];//学术硕士总分分段人数
 private:
 	string major;	//专业
 	paper p[3];		//论文
@@ -203,7 +206,7 @@ public:
 		cout << "性别(男输入m,女输入f):";
 		input >> a.sex;
 
-		while (!(sex == 'm' || sex == 'f')) {
+		while (!(a.sex == 'm' || a.sex == 'f')) {
 			cerr << "性别输入错误，请重新输入:";
 			input >> a.sex;
 		}
@@ -241,7 +244,10 @@ public:
 	}
 	//统计函数
 	static void statisticalData(Graduate_e*);
-
+	static double sumEngineeringScore;//工程硕士全体总成绩
+	static int countEngineeringNumber;//工程硕士总人数
+	static double averageEngineeringScore;//工程硕士平均成绩
+	static int e[6];//学术硕士总分分段人数
 private:
 	string area;	//领域
 	pair<string,char> p;	//项目

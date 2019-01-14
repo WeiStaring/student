@@ -1,6 +1,17 @@
 #pragma once
-
-void addStudentData()
+#include<iostream>
+#include<string.h>
+#include<string>
+using namespace std;
+void addStudentData();
+void insertData();
+void delData();
+void printData();
+void modifyData();
+void seekGraduateStudent();
+void statisticalStudentData();
+void initSystem();
+void exitSystem();
 
 void menu()//≤Àµ•ΩÁ√Ê
 {
