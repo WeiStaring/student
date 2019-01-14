@@ -66,6 +66,7 @@ public:
 			output << "论文" << (i + 1) << "名称:" << a.p[i].name << "该论文级别:" << a.p[i].level << "\t该论文成绩:" << a.p[i].score << endl;
 		}
 		output << "论文成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
+		return output;
 	}
 
 	friend istream& operator>>(istream& input, Graduate_a& astu) {
