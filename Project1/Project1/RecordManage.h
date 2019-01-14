@@ -1,11 +1,12 @@
 #pragma once
 #include<iostream>
+#include<fstream>
 #include"Student.h"
 using namespace std;
 
 void firstInputData(Graduate_a* head) {
 	int flag;
-	cout << "正在输入数据，是否继续？yes:1,no:0" << endl;
+	cout << "正在录入数据，是否继续？yes:1,no:0" << endl;
 	cin >> flag;
 	if (!flag)
 		return;
@@ -17,16 +18,15 @@ void firstInputData(Graduate_a* head) {
 		q = q->pnext;
 
 	while (flag) {
-
 		Graduate_a *p = new Graduate_a;
 		cin >> *p;
 		q->pnext = p;
 		q = p;
+		getchar();
 		cout << "继续？yes：1，no：0" << endl;
 		cin >> flag;
 	}
 }
-
 
 void saveStudentData(Graduate_a* head) {
 	//建立一个txt文本文件
@@ -128,7 +128,8 @@ loop:
 		exit(0);
 	}
 }
-Graduate_a* inputAcademicData(Graduate_a *head)//录入学术研究生数据
+//录入学术研究生数据
+Graduate_a* inputAcademicData(Graduate_a *head)
 {
 	Graduate_a *p, *q;
 	p = q = new Graduate_a;
@@ -178,7 +179,8 @@ Graduate_a* inputAcademicData(Graduate_a *head)//录入学术研究生数据
 	q->pnext = NULL;
 	return head;
 }
-Graduate_a* insertAcademicData(Graduate_a *head)//插入某个学术研究生数据
+//插入某个学术研究生数据
+Graduate_a* insertAcademicData(Graduate_a *head)
 {
 	if (head->pnext == NULL)//判断缓存中是否有数据
 	{
@@ -207,7 +209,8 @@ Graduate_a* insertAcademicData(Graduate_a *head)//插入某个学术研究生数据
 	q->pnext = p;
 	return head;
 }
-Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
+//删除某个学术研究生数据
+Graduate_a* delAcademicData(Graduate_a *head)
 {
 	if (head->pnext == NULL)//判断缓存中是否有数据
 	{
@@ -288,7 +291,8 @@ loopq:
 	}
 	return head;
 }
-void printAcademicData(Graduate_a *head)//输出学术研究生数据
+//输出学术研究生数据
+void printAcademicData(Graduate_a *head)
 {
 	Graduate_a *p = head->pnext;
 	if (head->pnext == NULL)
@@ -305,7 +309,8 @@ void printAcademicData(Graduate_a *head)//输出学术研究生数据
 	}
 	return;
 }
-void modifyAcademicData()//修改学术研究生的数据
+//修改学术研究生的数据
+void modifyAcademicData()
 {
 	Graduate_a *p, *q;
 	p = seekAcademicData(Graduate_a::aHead);

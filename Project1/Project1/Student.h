@@ -41,7 +41,7 @@ public:
 		countAcademicNumber--;
 	}
 
-	void saveAcademicStudentData(Graduate_a *head);
+	void saveAcademicStudentData();
 
 	double calculatePaperScore() {
 		//计算论文分数
@@ -66,6 +66,7 @@ public:
 			output << "论文" << (i + 1) << "名称:" << a.p[i].name << "该论文级别:" << a.p[i].level << "\t该论文成绩:" << a.p[i].score << endl;
 		}
 		output << "论文成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
+		return output;
 	}
 
 	friend istream& operator>>(istream& input, Graduate_a& astu) {
@@ -163,7 +164,7 @@ public:
 		countEngineeringNumber--;
 	}
 
-	void saveAcademicStudentData(Graduate_a *head);
+	void saveEngineerStudentData();
 
 	double calculateEngineerScore() {
 		//计算项目分数
@@ -256,16 +257,5 @@ private:
 
 };
 
-static double sumAcademicScore = 0; // 学术硕士全体总成绩
-static int countAcademicNumber = 0;//学术硕士总人数
-static double averageAcademicScore = 0;//学术硕士平均成绩
-static int a[6] = { 0,0,0,0,0,0 };//学术硕士总分分段人数
 
-static double sumEngineeringScore = 0;//工程硕士全体总成绩
-static int countEngineeringNumber = 0;//工程硕士总人数
-static double averageEngineeringScore = 0;//工程硕士平均成绩
-static int e[6] = { 0,0,0,0,0,0 };//学术硕士总分分段人数
-
-Graduate_a *aHead = new Graduate_a();  //Graduate_a的链表头结点，头结点的下一个为第一个记录
-Graduate_e *eHead = new Graduate_e();  //Graduate_e的链表头结点，头结点的下一个为第一个记录
 
