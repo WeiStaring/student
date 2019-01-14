@@ -5,12 +5,12 @@
 using namespace std;
 
 
-typedef struct paper{
+typedef struct{
 	//学术硕士论文
 	string name;	//论文名字
 	int level;		//论文等级(1,2,3)
 	double score;		//论文成绩
-};
+}paper;
 
 
 class Graduate {
