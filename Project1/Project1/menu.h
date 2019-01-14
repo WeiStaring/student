@@ -1,5 +1,7 @@
 #pragma once
 
+void addStudentData()
+
 void menu()//≤Àµ•ΩÁ√Ê
 {
 	int i = 0;
