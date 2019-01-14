@@ -2,6 +2,7 @@
 #include<iostream>
 #include<cstring>
 #include<string>
+#include"Student.h"
 using namespace std;
 
 void addStudentData()//menu选项1对应函数
@@ -13,10 +14,10 @@ void addStudentData()//menu选项1对应函数
 	cout << "****************************************************" << endl;
 	int choice;
 	cin >> choice;
-	if (choice == 1)
-		aHead->saveAcademicStudentData();
+	/*if (choice == 1)
+		Graduate_a::aHead->saveAcademicStudentData();
 	else
-		eHead->saveEngineerStudentData();
+		Graduate_e::eHead->saveEngineerStudentData();*/
 }
 
 
@@ -86,76 +87,76 @@ void exitSystem() {
 void menu()//菜单界面
 {
 	int i = 0;
-loop:
-	cout << "***************************************************" << endl;
-	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
-	cout << "*" << "                1.研究生信息录入*                " << "*" << endl;
-	cout << "*" << "                2.研究生信息插入                 " << "*" << endl;
-	cout << "*" << "                3.研究生信息删除                 " << "*" << endl;
-	cout << "*" << "                4.研究生信息输出                 " << "*" << endl;
-	cout << "*" << "                5.研究生信息修改                 " << "*" << endl;
-	cout << "*" << "                6.研究生信息查找                 " << "*" << endl;
-	cout << "*" << "                7.研究生信息统计                 " << "*" << endl;
-	cout << "*" << "                8.退出系统                       " << "*" << endl;
-	cout << "*" << "                9.初始化该系统                   " << "*" << endl;
-	cout << "****************************************************" << endl;
+	for (;;) {
+		cout << "***************************************************" << endl;
+		cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
+		cout << "*" << "                1.研究生信息录入*                " << "*" << endl;
+		cout << "*" << "                2.研究生信息插入                 " << "*" << endl;
+		cout << "*" << "                3.研究生信息删除                 " << "*" << endl;
+		cout << "*" << "                4.研究生信息输出                 " << "*" << endl;
+		cout << "*" << "                5.研究生信息修改                 " << "*" << endl;
+		cout << "*" << "                6.研究生信息查找                 " << "*" << endl;
+		cout << "*" << "                7.研究生信息统计                 " << "*" << endl;
+		cout << "*" << "                8.退出系统                       " << "*" << endl;
+		cout << "*" << "                9.初始化该系统                   " << "*" << endl;
+		cout << "****************************************************" << endl;
 
-	cout << "请选择:" << endl;
-	cin >> i;
-	switch (i)
-	{
-	case 1:
-		addStudentData();//信息录入
-		cout << "录入成功！" << endl;
-		system("pause");
-		system("cls");
-		break;
-	case 2:
-		insertData();//信息插入
-		cout << "插入成功！" << endl;
-		system("pause");
-		system("cls");
-		break;
-	case 3:
-		delData();//信息删除
-		cout << "删除成功！" << endl;
-		system("pause");
-		system("cls");
-		break;
-	case 4:
-		printData();//信息输出
-		cout << "输出成功！" << endl;
-		system("pause");
-		system("cls");
-		break;
-	case 5:
-		modifyData();//信息修改
-		cout << "修改成功！" << endl;
-		system("pause");
-		system("cls");
-		break;
-	case 6:
-		seekGraduateStudent();//信息查找
-		cout << "查找成功！" << endl;
-		system("pause");
-		system("cls");
-		break;
-	case 7:
-		statisticalStudentData();//信息统计
-		system("pause");
-		system("cls");
-		break;
-	case 8:
-		exitSystem();//系统退出函数
-		break;
-	case 9:
-		initSystem();//初始化系统
-		break;
-	default:
-		cout << "输入有误，请重新输入！" << endl;
-		goto loop;
+		cout << "请选择:" << endl;
+
+		cin >> i;
+		switch (i)
+		{
+		case 1:
+			addStudentData();//信息录入
+			cout << "录入成功！" << endl;
+			system("pause");
+			system("cls");
+			break;
+		case 2:
+			insertData();//信息插入
+			cout << "插入成功！" << endl;
+			system("pause");
+			system("cls");
+			break;
+		case 3:
+			delData();//信息删除
+			cout << "删除成功！" << endl;
+			system("pause");
+			system("cls");
+			break;
+		case 4:
+			printData();//信息输出
+			cout << "输出成功！" << endl;
+			system("pause");
+			system("cls");
+			break;
+		case 5:
+			modifyData();//信息修改
+			cout << "修改成功！" << endl;
+			system("pause");
+			system("cls");
+			break;
+		case 6:
+			seekGraduateStudent();//信息查找
+			cout << "查找成功！" << endl;
+			system("pause");
+			system("cls");
+			break;
+		case 7:
+			statisticalStudentData();//信息统计
+			system("pause");
+			system("cls");
+			break;
+		case 8:
+			exitSystem();//系统退出函数
+			break;
+		case 9:
+			initSystem();//初始化系统
+			break;
+		default:
+			cout << "输入有误，请重新输入！" << endl;
+		}
 	}
-	goto loop;
 	return;
 }
 
