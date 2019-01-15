@@ -44,7 +44,7 @@ void saveAcademicStudentData(Graduate_a *head)//保存学术研究生数据到磁盘
 	return;
 }
 //读取磁盘数据到内存
-Graduate_a* getAcademicStudentData(Graduate_a *head)//获取磁盘中学术研究生数据到缓存
+Graduate_a* loadAcademicStudentData(Graduate_a *head)//获取磁盘中学术研究生数据到缓存
 {
 loop:
 	ifstream infile("AcademicStudentData.dat", ios::in | ios::binary);
@@ -53,7 +53,7 @@ loop:
 		cerr << "欢迎您第一次使用该系统，您首先要做的录入数据！" << endl;
 		cerr << "警告：如果您不是第一次使用该系统，错误代码0x125158（请联系管理员处理）" << endl;
 		firstInputData(Graduate_a::aHead);
-		saveStudentData(Graduate_e::eHead);
+		saveStudentData(Graduate_a::aHead);
 		exit(0);
 		goto loop;
 	}
@@ -186,4 +186,57 @@ void saveEngineerStudentData(Graduate_e *head)//保存学术研究生数据到磁盘
 	}
 	outfiled.close();
 	return;
+}
+
+Graduate_e* loadEngineerStudentData(Graduate_e *head)//获取磁盘中学术研究生数据到缓存
+{
+loop:
+	ifstream infile("EngineerStudentData.dat", ios::in | ios::binary);
+	if (!infile)
+	{
+		cerr << "欢迎您第一次使用该系统，您首先要做的录入数据！" << endl;
+		cerr << "警告：如果您不是第一次使用该系统，错误代码0x125158（请联系管理员处理）" << endl;
+		firstInputData(Graduate_e::eHead);
+		saveStudentData(Graduate_e::eHead);
+		exit(0);
+		goto loop;
+	}
+	infile.seekg(0, ios::beg);//重置指针的位置
+	Graduate_e *p, *q;
+	p = q = new Graduate_e;
+
+	if (p == NULL || q == NULL)//申请内存失败操作
+	{
+		cerr << "错误代码：0x123456！" << endl;
+		cerr << "异常错误！（请上报管理员处理）" << endl;
+		system("pause");
+		exit(0);
+	}
+	infile.read((char*)p, sizeof(*p));
+	int i = 1;
+	while (!infile.eof())
+	{
+		if (i == 1)
+		{
+			head->pnext = p;
+		}
+		else
+		{
+			q->pnext = p;
+		}
+		q = p;
+		p = new Graduate_e;
+		if (p == NULL)//申请内存失败操作
+		{
+			cerr << "错误代码：0x123457！" << endl;
+			cerr << "异常错误！（请上报管理员处理）" << endl;
+			system("pause");
+			exit(0);
+		}
+		infile.read((char*)p, sizeof(*p));
+		i++;
+	}
+	q->pnext = NULL;
+	infile.close();
+	return head;
 }

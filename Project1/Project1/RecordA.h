@@ -227,7 +227,6 @@ Graduate_a* inputAcademicData(Graduate_a *head)//录入学术研究生数据
 			exit(0);
 		}
 		cin >> *p;
-		p->getNum();
 		if (p->getNum() != "")
 		{
 			cout << "录入成功！" << endl;
@@ -282,14 +281,13 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 	Graduate_a *p, *q;
 	cout << "学号（1）， 姓名（2）？" << endl;
 	int i = 0;
-	for (;;) {
+	while (1) {
 		cin >> i;
-		if (!(i == 1 || i == 2))
-		{
-			cerr << "输入有误，请重新输入！" << endl;
-		}
-		break;
+		if (i == 1 || i == 2) 
+			break;
+		cout << "请正确输入" << endl;
 	}
+	
 	p = head->pnext;
 	q = head;
 	string targetNum;
@@ -297,20 +295,20 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 	switch (i)
 	{
 	case 1:
-	loopnu:
 		for (;;) {
 			cout << "请输入学号：" << endl;
 			cin >> targetNum;
+			if (targetNum == "0")
+				return NULL;
 			while (p->getNum() != targetNum)
 			{
 				q = p;
 				p = p->pnext;
 			}
 			if (p == NULL)
-			{
-				cerr << "没有这个数据！请重新输入！" << endl;
-			}
-			else break;
+				cerr << "没有这个数据！请重新输入！或者输入0退出" << endl;
+			else 
+				break;
 		}
 		break;
 	case 2:
@@ -323,18 +321,12 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 				p = p->pnext;
 			}
 			if (p == NULL)
-			{
 				cerr << "没有这个数据！请重新输入！" << endl;
-			}
-			else break;
+			else 
+				break;
 		}
 		break;
 
-	default:
-		cerr << "错误代码：0x123459！" << endl;
-		cerr << "异常错误！（请上报管理员处理）" << endl;
-		system("pause");
-		exit(0);
 	}
 	i = 0;
 	for (;;) {
@@ -419,4 +411,21 @@ loop:
 		system("pause");
 		exit(0);
 	}
+}
+pair<Graduate_a *, Graduate_a*> getThing(Graduate_a*head,string clue,string target, string (*fun)()) {
+	Graduate_a * p=head, *q;
+	for (;;) {
+		cout << clue << endl;
+		cin >> target;
+		while (fun() != target)
+		{
+			q = p;
+			p = p->pnext;
+		}
+		if (p == NULL)
+			cerr << "没有这个数据！请重新输入！" << endl;
+		else
+			break;
+	}
+	return { p,q };
 }
