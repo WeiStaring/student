@@ -70,7 +70,7 @@ void delData() {//menu选项3函数
 	cin >> choice;
 	//暂时没写if else
 	if (choice)
-		delAcademicData(Graduate_a::aHead);
+		delAcademicData(Graduate_a::aHead, Graduate_a::del_aHead);
 }
 
 
