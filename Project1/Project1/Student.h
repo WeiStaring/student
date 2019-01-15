@@ -160,8 +160,11 @@ class Graduate_e :public Graduate
 {
 	//工程硕士
 public:
+	void Bsort(Graduate_e *head, int i);
 	Graduate_e *pnext;
 	static Graduate_e *eHead;
+
+	double getTscore() { return tscore; }
 	static Graduate_e *del_eHead;
 	Graduate_e() {
 		pnext = NULL;
