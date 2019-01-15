@@ -51,12 +51,12 @@ void Graduate_a::statisticalData(){
 	cout << "学术硕士总人数为：" << countAcademicNumber << endl;
 	cout << "其中他们的平均分为：" << averageAcademicScore << endl;
 	cout << "成绩分布为：" << endl;
-	cout << "100人数为：" << a[0] << "占总人数百分比为：" << 100 * (double)(a[0] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "90~99人数为：" << a[1] << "占总人数百分比为：" << 100 * (double)(a[1] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "80~89人数为：" << a[2] << "占总人数百分比为：" << 100 * (double)(a[2] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "70~79人数为：" << a[3] << "占总人数百分比为：" << 100 * (double)(a[3] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "60~69人数为：" << a[4] << "占总人数百分比为：" << 100 * (double)(a[4] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "不及格人数为：" << a[5] << "占总人数百分比为：" << 100 * (double)(a[5] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "100分人数为：" << a[0] << "\t占总人数百分比为：" << 100 * (double)(a[0] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "90~99分人数为：" << a[1] << "\t占总人数百分比为：" << 100 * (double)(a[1] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "80~89分人数为：" << a[2] << "\t占总人数百分比为：" << 100 * (double)(a[2] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "70~79分人数为：" << a[3] << "\t占总人数百分比为：" << 100 * (double)(a[3] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "60~69分人数为：" << a[4] << "\t占总人数百分比为：" << 100 * (double)(a[4] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "不及格人数为：" << a[5] << "\t占总人数百分比为：" << 100 * (double)(a[5] * 1.0 / countAcademicNumber) << "%" << endl;
 	return;
 }
 
@@ -104,12 +104,12 @@ void Graduate_e::statisticalData() {
 	cout << "学术硕士总人数为：" << countEngineeringNumber << endl;
 	cout << "其中他们的平均分为：" << averageEngineeringScore << endl;
 	cout << "成绩分布为：" << endl;
-	cout << "100人数为：" <<e[0] << "占总人数百分比为：" << 100 * (double)(e[0] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "90~99人数为：" << e[1] << "占总人数百分比为：" << 100 * (double)(e[1] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "80~89人数为：" << e[2] << "占总人数百分比为：" << 100 * (double)(e[2] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "70~79人数为：" << e[3] << "占总人数百分比为：" << 100 * (double)(e[3] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "60~69人数为：" << e[4] << "占总人数百分比为：" << 100 * (double)(e[4] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "不及格人数为：" << e[5] << "占总人数百分比为：" << 100 * (double)(e[5] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "100分人数为：" <<e[0] << "\t占总人数百分比为：" << 100 * (double)(e[0] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "90~99分人数为：" << e[1] << "\t占总人数百分比为：" << 100 * (double)(e[1] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "80~89分人数为：" << e[2] << "\t占总人数百分比为：" << 100 * (double)(e[2] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "70~79分人数为：" << e[3] << "\t占总人数百分比为：" << 100 * (double)(e[3] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "60~69分人数为：" << e[4] << "\t占总人数百分比为：" << 100 * (double)(e[4] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "不及格人数为：" << e[5] << "\t占总人数百分比为：" << 100 * (double)(e[5] * 1.0 / countEngineeringNumber) << "%" << endl;
 	return;
 }
 
@@ -247,4 +247,5 @@ void Graduate_e::Bsort(int i) {
 			end = cur;
 		}
 	}
+	
 }
