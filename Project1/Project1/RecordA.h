@@ -14,7 +14,7 @@ pair<Graduate_a *, Graduate_a*> getThing(Graduate_a*head, string clue) {
 	cout << "请输入"<<clue << endl;
 	cin >> target;
 
-	while (!p)
+	while (p)
 	{
 		if (clue == "学号")
 			b = p->getNum();
@@ -164,22 +164,20 @@ Graduate_a* seekAcademicData(Graduate_a *head)//查找某个学术研究生数据
 		system("pause");
 		exit(0);
 	}
-loop:
+	int i;
+	Graduate_a *p = 0;
 	cout << "学号（1）， 姓名（2）？" << endl;
-	int i = 0;
-	cin >> i;
-	if (!(i == 1 || i == 2))
-	{
-		cerr << "输入有误，请重新输入！" << endl;
-		goto loop;
-	}
-	Graduate_a *p=0;
-	switch (i)
-	{
-	case 1:
-		p = getThing(head, "学号").first; break;
-	case 2:
-		p = getThing(head, "姓名").first; break;
+	while (1) {
+		Inputdata(i, cin);
+		if (i == 1) {
+			p = getThing(head, "学号").first; break;
+		}
+		else if (i == 2) {
+			p = getThing(head, "姓名").first; break;
+		}
+		else {
+			cout << "输入错误，请重新输入" << endl;
+		}
 	}
 	return p;
 }
@@ -327,7 +325,7 @@ void delAcademicData(Graduate_a *head, Graduate_a* del_a_Head)//删除某个学术研究
 }
 
 //工程类研究生普通函数的定义
-Graduate_e* seekEngineerData(Graduate_e *head)//查找某个学术研究生数据
+Graduate_e* seekEngineerData(Graduate_e *head)//查找某个工程研究生数据
 {
 	if (head->pnext == NULL)//判断缓存中是否有数据
 	{
@@ -351,22 +349,19 @@ loop:
 	switch (i)
 	{
 	case 1:
-	loopnu:
 		cout << "请输入学号：" << endl;
 		cin >> targetNum;
-		while (p->getNum() != targetNum)
+		while ((p->getNum() != targetNum) && p)
 		{
 			p = p->pnext;
 		}
 		if (p == NULL)
 		{
-			cerr << "没有这个数据！请重新输入！" << endl;
-			goto loopnu;
+			cerr << "没有这个数据" << endl;
 		}
 		return p;
 		break;
 	case 2:
-	loopna:
 		cout << "请输入姓名：" << endl;
 		cin >> targetName;
 		while (!p && p->getName() != targetName)
@@ -375,8 +370,7 @@ loop:
 		}
 		if (p == NULL)
 		{
-			cerr << "没有这个数据！请重新输入！" << endl;
-			goto loopna;
+			cerr << "没有这个数据" << endl;
 		}
 		return p;
 		break;
