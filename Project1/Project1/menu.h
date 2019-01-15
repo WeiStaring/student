@@ -18,10 +18,14 @@ void addStudentData()//menu选项1对应函数
 	while(1){
 		Inputdata(choice, cin);
 		if (choice == 1) {
-			firstInputData(Graduate_a::aHead); break;
+			firstInputData(Graduate_a::aHead);
+			saveStudentData(Graduate_a::aHead);
+			break;
 		}
 		else if (choice == 2) {
-			firstInputData(Graduate_e::eHead); break;
+			firstInputData(Graduate_e::eHead);
+			saveStudentData(Graduate_e::eHead);
+			break;
 		}
 		else {
 			cout << "输入错误，请重新输入"<<endl;
@@ -192,8 +196,9 @@ void seekGraduateStudent() {
 	}
 		
 }
-void statisticalStudentData() {
 
+void statisticalStudentData() {
+	//Graduate_a::aHead->Bsort(Graduate_a::aHead, 1);
 }
 
 void initSystem() {
