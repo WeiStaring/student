@@ -97,7 +97,7 @@ loop:
 	return head;
 }
 //追加函数
-void addAcademicStudentData(Graduate_a *head)//追加学术研究生数据
+/*void addAcademicStudentData(Graduate_a *head)//追加学术研究生数据
 {
 	//建立一个txt.dat文件
 	Graduate_a *p = head->pnext;
@@ -146,7 +146,7 @@ void addAcademicStudentData(Graduate_a *head)//追加学术研究生数据
 	outfile.close();
 	outfiled.close();
 	return;
-}
+}*/
 
 //工程研究生信息入磁盘
 void saveEngineerStudentData(Graduate_e *head)//保存学术研究生数据到磁盘
@@ -217,13 +217,9 @@ loop:
 	while (!infile.eof())
 	{
 		if (i == 1)
-		{
 			head->pnext = p;
-		}
 		else
-		{
 			q->pnext = p;
-		}
 		q = p;
 		p = new Graduate_e;
 		if (p == NULL)//申请内存失败操作
