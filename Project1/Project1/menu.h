@@ -228,14 +228,68 @@ void seekGraduateStudent() {
 }
 
 void statisticalStudentData() {
-	//Graduate_a::aHead->Bsort(Graduate_a::aHead, 1);
+	for (;;) {
+		cout << "***************************************************" << endl;
+		cout << "*" << "             ****统计系统****                " << "*" << endl;
+		cout << "*" << "                1.按成绩对表排序             " << "*" << endl;
+		cout << "*" << "                2.按学号对表排序             " << "*" << endl;
+		cout << "*" << "                3.按姓名对表排序             " << "*" << endl;
+		cout << "*" << "                4.总体信息概况               " << "*" << endl;
+		cout << "***************************************************" << endl;
+		int choice;
+		Inputdata(choice, cin);
+		switch (choice) {
+		case 4:
+			Graduate_a::statisticalData();
+			Graduate_e::statisticalData();
+			break;
+		case 1:case 2:case 3:
+			Graduate_a::Bsort(choice);
+			Graduate_e::Bsort(choice);
+			saveStudentData(Graduate_a::aHead);
+			saveStudentData(Graduate_e::eHead);
+			cout << "排序完毕......" << endl;
+			cout << "学术研究生信息如下" << endl;
+			Graduate_a* tmp = Graduate_a::aHead->pnext;
+			if (!tmp)
+				cout << "学术研究生信息为空，请先录入" << endl;
+			else
+			{
+				while (tmp)
+				{
+					cout << *tmp << endl;
+					tmp = tmp->pnext;
+				}
+			}
+			cout << "学术研究生信息输出完毕" << endl;
+
+			cout << "工程研究生信息如下" << endl;
+			Graduate_e* tmp2 = Graduate_e::eHead->pnext;
+			if (!tmp2)
+				cout << "工程研究生信息为空，请先录入" << endl;
+			else
+			{
+				while (tmp2)
+				{
+					cout << *tmp2 << endl;
+					tmp2 = tmp2->pnext;
+				}
+			}
+			cout << "工程研究生信息输出完毕" << endl;
+			break;
+		default:
+			cout << "输入错误" << endl;
+			continue;
+		}
+		break;
+	}
 }
 
 void initSystem() {
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
-	cout << "*" << "            该操作将会删除所有学生信息             " << "*" << endl;
-	cout << "*" << "          并重置系统，是否仍要进行？(y/n)             " << "*" << endl;
+	cout << "*" << "            该操作将会删除所有学生信息           " << "*" << endl;
+	cout << "*" << "          并重置系统，是否仍要进行？(y/n)        " << "*" << endl;
 	cout << "***************************************************" << endl;
 
 	char c;
@@ -332,6 +386,8 @@ void menu()//菜单界面
 			break;
 		case 9:
 			initSystem();//初始化系统
+			system("pause");
+			system("cls");
 			break;
 		default:
 			cout << "输入有误，请重新输入！" << endl;

@@ -7,15 +7,15 @@
 using namespace std;
 
 //统计函数
-void Graduate_a::statisticalData(Graduate_a *head){
-	if (head->pnext == NULL)
+void Graduate_a::statisticalData(){
+	if (aHead->pnext == NULL)
 	{
 		cerr << "错误0x456121" << endl;
 		cerr << "请联系管理员解决（链表中无数据）" << endl;
 		system("pause");
 		exit(0);
 	}
-	Graduate_a *p = head->pnext;
+	Graduate_a *p = aHead->pnext;
 	while (p != NULL)
 	{
 		countAcademicNumber++;
@@ -51,24 +51,24 @@ void Graduate_a::statisticalData(Graduate_a *head){
 	cout << "学术硕士总人数为：" << countAcademicNumber << endl;
 	cout << "其中他们的平均分为：" << averageAcademicScore << endl;
 	cout << "成绩分布为：" << endl;
-	cout << "100人数为：" << a[0] << "占总人数百分比为：" << 100 * (double)(a[0] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "90~99人数为：" << a[1] << "占总人数百分比为：" << 100 * (double)(a[1] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "80~89人数为：" << a[2] << "占总人数百分比为：" << 100 * (double)(a[2] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "70~79人数为：" << a[3] << "占总人数百分比为：" << 100 * (double)(a[3] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "60~69人数为：" << a[4] << "占总人数百分比为：" << 100 * (double)(a[4] * 1.0 / countAcademicNumber) << "%" << endl;
-	cout << "不及格人数为：" << a[5] << "占总人数百分比为：" << 100 * (double)(a[5] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "100分人数为：" << a[0] << "\t占总人数百分比为：" << 100 * (double)(a[0] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "90~99分人数为：" << a[1] << "\t占总人数百分比为：" << 100 * (double)(a[1] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "80~89分人数为：" << a[2] << "\t占总人数百分比为：" << 100 * (double)(a[2] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "70~79分人数为：" << a[3] << "\t占总人数百分比为：" << 100 * (double)(a[3] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "60~69分人数为：" << a[4] << "\t占总人数百分比为：" << 100 * (double)(a[4] * 1.0 / countAcademicNumber) << "%" << endl;
+	cout << "不及格人数为：" << a[5] << "\t占总人数百分比为：" << 100 * (double)(a[5] * 1.0 / countAcademicNumber) << "%" << endl;
 	return;
 }
 
-void Graduate_e::statisticalData(Graduate_e *head) {
-	if (head->pnext == NULL)
+void Graduate_e::statisticalData() {
+	if (eHead->pnext == NULL)
 	{
 		cerr << "错误0x456121" << endl;
 		cerr << "请联系管理员解决（链表中无数据）" << endl;
 		system("pause");
 		exit(0);
 	}
-	Graduate_e *p = head->pnext;
+	Graduate_e *p = eHead->pnext;
 	while (p != NULL)
 	{
 		countEngineeringNumber++;
@@ -77,19 +77,19 @@ void Graduate_e::statisticalData(Graduate_e *head) {
 		{
 			e[0]++;
 		}
-		else if (p->tscore >= 90.0000 && p->tscore <= 99.0000)
+		else if (p->tscore >= 90.0000 && p->tscore <= 99.9999)
 		{
 			e[1]++;
 		}
-		else if (p->tscore >= 80.0000 && p->tscore <= 89.0000)
+		else if (p->tscore >= 80.0000 && p->tscore <= 89.9999)
 		{
 			e[2]++;
 		}
-		else if (p->tscore >= 70.0000 && p->tscore <= 79.0000)
+		else if (p->tscore >= 70.0000 && p->tscore <= 79.9999)
 		{
 			e[3]++;
 		}
-		else if (p->tscore >= 60.0000 && p->tscore <= 69.0000)
+		else if (p->tscore >= 60.0000 && p->tscore <= 69.9999)
 		{
 			e[4]++;
 		}
@@ -104,18 +104,18 @@ void Graduate_e::statisticalData(Graduate_e *head) {
 	cout << "学术硕士总人数为：" << countEngineeringNumber << endl;
 	cout << "其中他们的平均分为：" << averageEngineeringScore << endl;
 	cout << "成绩分布为：" << endl;
-	cout << "100人数为：" <<e[0] << "占总人数百分比为：" << 100 * (double)(e[0] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "90~99人数为：" << e[1] << "占总人数百分比为：" << 100 * (double)(e[1] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "80~89人数为：" << e[2] << "占总人数百分比为：" << 100 * (double)(e[2] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "70~79人数为：" << e[3] << "占总人数百分比为：" << 100 * (double)(e[3] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "60~69人数为：" << e[4] << "占总人数百分比为：" << 100 * (double)(e[4] * 1.0 / countEngineeringNumber) << "%" << endl;
-	cout << "不及格人数为：" << e[5] << "占总人数百分比为：" << 100 * (double)(e[5] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "100分人数为：" <<e[0] << "\t占总人数百分比为：" << 100 * (double)(e[0] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "90~99分人数为：" << e[1] << "\t占总人数百分比为：" << 100 * (double)(e[1] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "80~89分人数为：" << e[2] << "\t占总人数百分比为：" << 100 * (double)(e[2] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "70~79分人数为：" << e[3] << "\t占总人数百分比为：" << 100 * (double)(e[3] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "60~69分人数为：" << e[4] << "\t占总人数百分比为：" << 100 * (double)(e[4] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "不及格人数为：" << e[5] << "\t占总人数百分比为：" << 100 * (double)(e[5] * 1.0 / countEngineeringNumber) << "%" << endl;
 	return;
 }
 
-void Graduate_a::Bsort(Graduate_a *head,int i) {
+void Graduate_a::Bsort(int i) {
 	int min=0;
-	if (head->pnext == NULL){
+	if (aHead->pnext == NULL){
 		cerr << "错误0x456121" << endl;
 		cerr << "请联系管理员解决（链表中无数据）" << endl;
 		system("pause");
@@ -123,7 +123,7 @@ void Graduate_a::Bsort(Graduate_a *head,int i) {
 	}
 	
 	//=============冒泡排序====================
-	Graduate_a *head_1 = head->pnext;
+	Graduate_a *head_1 = aHead;
 	Graduate_a *pre, *cur, *next, *end, *temp;
 	end = NULL;
 	
@@ -182,9 +182,9 @@ void Graduate_a::Bsort(Graduate_a *head,int i) {
 
 
 
-void Graduate_e::Bsort(Graduate_e *head, int i) {
+void Graduate_e::Bsort(int i) {
 	int min = 0;
-	if (head->pnext == NULL) {
+	if (eHead->pnext == NULL) {
 		cerr << "错误0x456121" << endl;
 		cerr << "请联系管理员解决（链表中无数据）" << endl;
 		system("pause");
@@ -192,7 +192,7 @@ void Graduate_e::Bsort(Graduate_e *head, int i) {
 	}
 
 	//=============冒泡排序====================
-	Graduate_e *head_1 = head->pnext;
+	Graduate_e *head_1 = eHead;
 	Graduate_e *pre, *cur, *next, *end, *temp;
 	end = NULL;
 
@@ -247,4 +247,5 @@ void Graduate_e::Bsort(Graduate_e *head, int i) {
 			end = cur;
 		}
 	}
+	
 }
