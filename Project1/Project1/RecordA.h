@@ -357,3 +357,66 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 	}
 	return head;
 }
+
+//工程类研究生普通函数的定义
+Graduate_e* seekEngineerData(Graduate_e *head)//查找某个学术研究生数据
+{
+	if (head->pnext == NULL)//判断缓存中是否有数据
+	{
+		cerr << "错误代码：0x123458！" << endl;
+		cerr << "异常错误！（请上报管理员处理）" << endl;
+		system("pause");
+		exit(0);
+	}
+loop:
+	cout << "学号（1）， 姓名（2）？" << endl;
+	int i = 0;
+	cin >> i;
+	if (!(i == 1 || i == 2))
+	{
+		cerr << "输入有误，请重新输入！" << endl;
+		goto loop;
+	}
+	Graduate_e *p = head->pnext;
+	string targetNum;
+	string targetName;
+	switch (i)
+	{
+	case 1:
+	loopnu:
+		cout << "请输入学号：" << endl;
+		cin >> targetNum;
+		while (p->getNum() != targetNum)
+		{
+			p = p->pnext;
+		}
+		if (p == NULL)
+		{
+			cerr << "没有这个数据！请重新输入！" << endl;
+			goto loopnu;
+		}
+		return p;
+		break;
+	case 2:
+	loopna:
+		cout << "请输入姓名：" << endl;
+		cin >> targetName;
+		while (p->getName() != targetName)
+		{
+			p = p->pnext;
+		}
+		if (p == NULL)
+		{
+			cerr << "没有这个数据！请重新输入！" << endl;
+			goto loopna;
+		}
+		return p;
+		break;
+
+	default:
+		cerr << "错误代码：0x123459！" << endl;
+		cerr << "异常错误！（请上报管理员处理）" << endl;
+		system("pause");
+		exit(0);
+	}
+}

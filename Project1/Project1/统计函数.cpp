@@ -60,6 +60,7 @@ void Graduate_a::statisticalData(Graduate_a *head){
 	return;
 }
 
+/*
 void Graduate_a::Bsort(Graduate_a *head,int i) {
 	int min=0;
 	if (head->pnext == NULL){
@@ -126,4 +127,4 @@ void Graduate_a::Bsort(Graduate_a *head,int i) {
 		}
 		break;
 	}
-}
+}*/

@@ -1,4 +1,3 @@
-#include<iostream>
 #include"menu.h"
 #include"Student.h"
 using namespace std;
