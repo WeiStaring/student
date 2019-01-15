@@ -14,6 +14,8 @@ int Graduate_e::e[6] = { 0,0,0,0,0,0 };//学术硕士总分分段人数
 
 Graduate_a *Graduate_a::aHead = new Graduate_a();  //Graduate_a的链表头结点，头结点的下一个为第一个记录
 Graduate_e *Graduate_e::eHead = new Graduate_e();  //Graduate_e的链表头结点，头结点的下一个为第一个记录
+Graduate_a * Graduate_a::del_aHead = new Graduate_a();
+Graduate_e * Graduate_e::del_eHead = new Graduate_e();
 
 int main()
 {

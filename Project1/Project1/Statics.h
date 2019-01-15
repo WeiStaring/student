@@ -60,6 +60,58 @@ void Graduate_a::statisticalData(Graduate_a *head){
 	return;
 }
 
+void Graduate_e::statisticalData(Graduate_e *head) {
+	if (head->pnext == NULL)
+	{
+		cerr << "错误0x456121" << endl;
+		cerr << "请联系管理员解决（链表中无数据）" << endl;
+		system("pause");
+		exit(0);
+	}
+	Graduate_e *p = head->pnext;
+	while (p != NULL)
+	{
+		countEngineeringNumber++;
+		sumEngineeringScore = (double)(sumEngineeringScore + p->tscore);
+		if (fabs((float)(p->tscore - 100.0)) < 0.00001)//注意说明
+		{
+			e[0]++;
+		}
+		else if (p->tscore >= 90.0000 && p->tscore <= 99.0000)
+		{
+			e[1]++;
+		}
+		else if (p->tscore >= 80.0000 && p->tscore <= 89.0000)
+		{
+			e[2]++;
+		}
+		else if (p->tscore >= 70.0000 && p->tscore <= 79.0000)
+		{
+			e[3]++;
+		}
+		else if (p->tscore >= 60.0000 && p->tscore <= 69.0000)
+		{
+			e[4]++;
+		}
+		else if (p->tscore < 60.0000)
+		{
+			e[5]++;
+		}
+		p = p->pnext;
+	}
+	averageEngineeringScore = (double)((sumEngineeringScore)*1.0 / countEngineeringNumber);
+	//统计完毕,开始输出相关信息
+	cout << "学术硕士总人数为：" << countEngineeringNumber << endl;
+	cout << "其中他们的平均分为：" << averageEngineeringScore << endl;
+	cout << "成绩分布为：" << endl;
+	cout << "100人数为：" <<e[0] << "占总人数百分比为：" << 100 * (double)(e[0] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "90~99人数为：" << e[1] << "占总人数百分比为：" << 100 * (double)(e[1] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "80~89人数为：" << e[2] << "占总人数百分比为：" << 100 * (double)(e[2] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "70~79人数为：" << e[3] << "占总人数百分比为：" << 100 * (double)(e[3] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "60~69人数为：" << e[4] << "占总人数百分比为：" << 100 * (double)(e[4] * 1.0 / countEngineeringNumber) << "%" << endl;
+	cout << "不及格人数为：" << e[5] << "占总人数百分比为：" << 100 * (double)(e[5] * 1.0 / countEngineeringNumber) << "%" << endl;
+	return;
+}
 
 void Graduate_a::Bsort(Graduate_a *head,int i) {
 	int min=0;
@@ -115,6 +167,75 @@ void Graduate_a::Bsort(Graduate_a *head,int i) {
 			for (pre = head_1, cur = pre->pnext, next = cur->pnext; next != end; pre = pre->pnext, cur = cur->pnext, next = next->pnext) {
 				//相邻的节点比较
 				if (cur->getName()>next->getName()) {
+					cur->pnext = next->pnext;
+					pre->pnext = next;
+					next->pnext = cur;
+					temp = next;
+					next = cur;
+					cur = temp;
+				}
+			}
+			end = cur;
+		}
+	}
+}
+
+
+
+void Graduate_e::Bsort(Graduate_e *head, int i) {
+	int min = 0;
+	if (head->pnext == NULL) {
+		cerr << "错误0x456121" << endl;
+		cerr << "请联系管理员解决（链表中无数据）" << endl;
+		system("pause");
+		exit(0);
+	}
+
+	//=============冒泡排序====================
+	Graduate_e *head_1 = head->pnext;
+	Graduate_e *pre, *cur, *next, *end, *temp;
+	end = NULL;
+
+	switch (i) {
+	case 1:
+		while (head_1->pnext != end)
+		{
+			for (pre = head_1, cur = pre->pnext, next = cur->pnext; next != end; pre = pre->pnext, cur = cur->pnext, next = next->pnext) {
+				//相邻的节点比较
+				if (cur->getTscore() < next->getTscore()) {
+					cur->pnext = next->pnext;
+					pre->pnext = next;
+					next->pnext = cur;
+					temp = next;
+					next = cur;
+					cur = temp;
+				}
+			}
+			end = cur;
+		}
+		break;
+	case 2:
+		while (head_1->pnext != end)
+		{
+			for (pre = head_1, cur = pre->pnext, next = cur->pnext; next != end; pre = pre->pnext, cur = cur->pnext, next = next->pnext) {
+				//相邻的节点比较
+				if (cur->getNum() > next->getNum()) {
+					cur->pnext = next->pnext;
+					pre->pnext = next;
+					next->pnext = cur;
+					temp = next;
+					next = cur;
+					cur = temp;
+				}
+			}
+			end = cur;
+		}
+	case 3:
+		while (head_1->pnext != end)
+		{
+			for (pre = head_1, cur = pre->pnext, next = cur->pnext; next != end; pre = pre->pnext, cur = cur->pnext, next = next->pnext) {
+				//相邻的节点比较
+				if (cur->getName() > next->getName()) {
 					cur->pnext = next->pnext;
 					pre->pnext = next;
 					next->pnext = cur;
