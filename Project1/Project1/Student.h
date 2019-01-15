@@ -193,6 +193,7 @@ public:
 		output << "学号:" << a.num << "\t姓名:" << a.name << "\t性别:" << a.sex << endl;
 		output << "项目名称:" << a.p.first << "项目级别" << a.p.second << endl;
 		output << "项目成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
+		return output;
 	}
 
 	friend istream& operator>>(istream& input, Graduate_e& a) {

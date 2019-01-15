@@ -2,7 +2,7 @@
 #include<iostream>
 #include<fstream>
 #include"Student.h"
-#include"RecordManage.h"
+#include"RecordA.h"
 using namespace std;
 
 void saveAcademicStudentData(Graduate_a *head)//保存学术研究生数据到磁盘

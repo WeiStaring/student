@@ -3,6 +3,7 @@
 #include<cstring>
 #include<string>
 #include"RecordA.h"
+#include"FileManage.h"
 using namespace std;
 
 void addStudentData()//menu选项1对应函数
@@ -15,9 +16,15 @@ void addStudentData()//menu选项1对应函数
 	int choice;
 	cin >> choice;
 	if (choice == 1)
+	{
 		firstInputData(Graduate_a::aHead);
+		saveStudentData(Graduate_a::aHead);
+	}
 	else
+	{
 		firstInputData(Graduate_e::eHead);
+		saveStudentData(Graduate_e::eHead);
+	}
 }
 
 
@@ -89,6 +96,10 @@ void initSystem() {
 	system("cls");
 }
 void exitSystem() {
+
+	cout << "从文件读入信息" << endl;
+	Graduate_a* tmp = getAcademicStudentData(Graduate_a::aHead);
+	cout << *(tmp->pnext) << endl;
 	system("pause");
 	exit(0);
 };
