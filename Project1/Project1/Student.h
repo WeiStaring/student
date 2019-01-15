@@ -35,11 +35,9 @@ public:
 	static Graduate_a *del_aHead;
 	Graduate_a() {
 		pnext = NULL;
-		countAcademicNumber++;
 	}
 
 	~Graduate_a() {
-		countAcademicNumber--;
 	}
 
 	void saveAcademicStudentData();
@@ -53,7 +51,7 @@ public:
 		pscore = s;
 		return s;
 	}
-	void Bsort(Graduate_a *head,int i);
+	
 	double calculateSumScore() {
 		//计算总成绩
 		tscore = score * 0.7 + pscore * 0.3;
@@ -135,7 +133,8 @@ public:
 
 	}
 	//统计函数
-	static void statisticalData(Graduate_a*);
+	static void Bsort(int i);
+	static void statisticalData();
 	static double sumAcademicScore; // 学术硕士全体总成绩
 	static int countAcademicNumber;//学术硕士总人数
 	static double averageAcademicScore;//学术硕士平均成绩
@@ -153,7 +152,6 @@ class Graduate_e :public Graduate
 {
 	//工程硕士
 public:
-	void Bsort(Graduate_e *head, int i);
 	Graduate_e *pnext;
 	static Graduate_e *eHead;
 
@@ -161,11 +159,9 @@ public:
 	static Graduate_e *del_eHead;
 	Graduate_e() {
 		pnext = NULL;
-		countEngineeringNumber++;
 	}
 
 	~Graduate_e() {
-		countEngineeringNumber--;
 	}
 
 	void saveEngineerStudentData();
@@ -252,7 +248,8 @@ public:
 		return input;
 	}
 	//统计函数
-	static void statisticalData(Graduate_e*);
+	static void Bsort(int i);
+	static void statisticalData();
 	static double sumEngineeringScore;//工程硕士全体总成绩
 	static int countEngineeringNumber;//工程硕士总人数
 	static double averageEngineeringScore;//工程硕士平均成绩

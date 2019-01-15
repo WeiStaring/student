@@ -77,19 +77,19 @@ void Graduate_e::statisticalData() {
 		{
 			e[0]++;
 		}
-		else if (p->tscore >= 90.0000 && p->tscore <= 99.9999)
+		else if (p->tscore >= 90.0000 && p->tscore <= 99.0000)
 		{
 			e[1]++;
 		}
-		else if (p->tscore >= 80.0000 && p->tscore <= 89.9999)
+		else if (p->tscore >= 80.0000 && p->tscore <= 89.0000)
 		{
 			e[2]++;
 		}
-		else if (p->tscore >= 70.0000 && p->tscore <= 79.9999)
+		else if (p->tscore >= 70.0000 && p->tscore <= 79.0000)
 		{
 			e[3]++;
 		}
-		else if (p->tscore >= 60.0000 && p->tscore <= 69.9999)
+		else if (p->tscore >= 60.0000 && p->tscore <= 69.0000)
 		{
 			e[4]++;
 		}

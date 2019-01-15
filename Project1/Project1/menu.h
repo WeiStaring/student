@@ -228,7 +228,33 @@ void seekGraduateStudent() {
 }
 
 void statisticalStudentData() {
-	//Graduate_a::aHead->Bsort(Graduate_a::aHead, 1);
+	for (;;) {
+		cout << "***************************************************" << endl;
+		cout << "*" << "             ****统计系统****                " << "*" << endl;
+		cout << "*" << "                1.按成绩对表排序             " << "*" << endl;
+		cout << "*" << "                2.按学号对表排序             " << "*" << endl;
+		cout << "*" << "                3.按姓名对表排序             " << "*" << endl;
+		cout << "*" << "                4.总体信息概况               " << "*" << endl;
+		cout << "***************************************************" << endl;
+		int choice;
+		Inputdata(choice, cin);
+		switch (choice) {
+		case 4:
+			Graduate_a::statisticalData();
+			Graduate_e::statisticalData();
+			break;
+		case 1:case 2:case 3:
+			Graduate_a::Bsort(choice);
+			Graduate_e::Bsort(choice);
+			saveStudentData(Graduate_a::aHead);
+			saveStudentData(Graduate_e::eHead);
+			break;
+		default:
+			cout << "输入错误" << endl;
+			continue;
+		}
+		break;
+	}
 }
 
 void initSystem() {
