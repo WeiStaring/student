@@ -119,7 +119,7 @@ void saveStudentData(Graduate_a* head) {
 void saveStudentData(Graduate_e* head) {
 	//建立一个txt文本文件
 	Graduate_e *p = head->pnext;
-	ofstream outfile("AcademicStudentData.txt", ios::out);
+	ofstream outfile("EngineerStudentData.txt", ios::out);
 	if (!outfile)
 	{
 		cerr << "文件打开失败!" << endl;
@@ -136,7 +136,7 @@ void saveStudentData(Graduate_e* head) {
 	outfile.close();
 	//建立一个dat二进制文件，方便以后读取
 	p = head->pnext;//重新赋值
-	ofstream outfiled("AcademicStudentData.dat", ios::out | ios::binary);
+	ofstream outfiled("EngineerStudentData.dat", ios::out | ios::binary);
 	if (!outfiled)
 	{
 		cerr << "文件打开失败!" << endl;
