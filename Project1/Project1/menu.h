@@ -71,11 +71,9 @@ void delData() {//menuСЎПо3єЇКэ
 		delAcademicData(Graduate_a::aHead);
 }
 
-
 void printData() {
 
 }
-
 
 void modifyData() {
 	cout << "***************************************************" << endl;
