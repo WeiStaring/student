@@ -234,8 +234,8 @@ void statisticalStudentData() {
 void initSystem() {
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
-	cout << "*" << "            该操作将会删除所有学生信息             " << "*" << endl;
-	cout << "*" << "          并重置系统，是否仍要进行？(y/n)             " << "*" << endl;
+	cout << "*" << "            该操作将会删除所有学生信息           " << "*" << endl;
+	cout << "*" << "          并重置系统，是否仍要进行？(y/n)        " << "*" << endl;
 	cout << "***************************************************" << endl;
 
 	char c;
@@ -332,6 +332,8 @@ void menu()//菜单界面
 			break;
 		case 9:
 			initSystem();//初始化系统
+			system("pause");
+			system("cls");
 			break;
 		default:
 			cout << "输入有误，请重新输入！" << endl;
