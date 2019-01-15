@@ -4,6 +4,8 @@
 #include<string>
 #include"RecordA.h"
 #include"FileManage.h"
+//#include"Statics.h"
+
 using namespace std;
 
 void addStudentData()//menu选项1对应函数
@@ -190,8 +192,20 @@ void seekGraduateStudent() {
 	}
 		
 }
-void statisticalStudentData() {
 
+void statisticalStudentData() {
+	cout << "***************************************************" << endl;
+	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
+	cout << "*" << "                1.学术研究生信息统计                " << "*" << endl;
+	cout << "*" << "                2.工程研究生信息统计                 " << "*" << endl;
+	cout << "*" << "                3.所有研究生信息统计                 " << "*" << endl;
+	cout << "****************************************************" << endl;
+
+	int choice;
+	cin >> choice;
+
+	//if (choice == 1)
+		//Graduate_a::statisticalData(Graduate_a::aHead);
 }
 
 void initSystem() {
