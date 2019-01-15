@@ -36,10 +36,25 @@ void insertData() {	//menu选项2函数
 	cout << "****************************************************" << endl;
 	int choice;
 	cin >> choice;
-	//if (choice == 1)
-		//aHead->saveAcademicStudentData();
-	//else
-		//eHead->saveEngineerStudentData();
+
+	if (choice == 1)
+	{
+		Graduate_a* tmp = new Graduate_a();
+		cout << "输入学术研究生信息" << endl;
+		cin >> *tmp;
+		tmp->pnext = Graduate_a::aHead->pnext;
+		Graduate_a::aHead->pnext = tmp;
+		saveStudentData(Graduate_a::aHead);
+	}
+	else
+	{
+		Graduate_e* tmp = new Graduate_e();
+		cout << "输入工程研究生信息" << endl;
+		cin >> *tmp;
+		tmp->pnext = Graduate_e::eHead->pnext;
+		Graduate_e::eHead->pnext = tmp;
+		saveStudentData(Graduate_e::eHead);
+	}
 }
 
 
