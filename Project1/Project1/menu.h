@@ -41,25 +41,30 @@ void insertData() {	//menu选项2函数
 	cout << "*" << "                2.工程研究生信息插入             " << "*" << endl;
 	cout << "***************************************************" << endl;
 	int choice;
-	cin >> choice;
-
-	if (choice == 1)
-	{
-		Graduate_a* tmp = new Graduate_a();
-		cout << "输入学术研究生信息" << endl;
-		cin >> *tmp;
-		tmp->pnext = Graduate_a::aHead->pnext;
-		Graduate_a::aHead->pnext = tmp;
-		saveStudentData(Graduate_a::aHead);
-	}
-	else
-	{
-		Graduate_e* tmp = new Graduate_e();
-		cout << "输入工程研究生信息" << endl;
-		cin >> *tmp;
-		tmp->pnext = Graduate_e::eHead->pnext;
-		Graduate_e::eHead->pnext = tmp;
-		saveStudentData(Graduate_e::eHead);
+	
+	while(1) {
+		Inputdata(choice, cin);
+		if (choice == 1) {
+			Graduate_a* tmp = new Graduate_a();
+			cout << "输入学术研究生信息" << endl;
+			cin >> *tmp;
+			tmp->pnext = Graduate_a::aHead->pnext;
+			Graduate_a::aHead->pnext = tmp;
+			saveStudentData(Graduate_a::aHead);
+			break;
+		}
+		else if (choice == 2) {
+			Graduate_e* tmp = new Graduate_e();
+			cout << "输入工程研究生信息" << endl;
+			cin >> *tmp;
+			tmp->pnext = Graduate_e::eHead->pnext;
+			Graduate_e::eHead->pnext = tmp;
+			saveStudentData(Graduate_e::eHead);
+			break;
+		}
+		else {
+			cout << "输入错误，请重新输入" << endl;
+		}
 	}
 }
 
@@ -71,10 +76,20 @@ void delData() {//menu选项3函数
 	cout << "*" << "                2.工程研究生信息删除             " << "*" << endl;
 	cout << "***************************************************" << endl;
 	int choice;
-	cin >> choice;
-	//暂时没写if else
-	if (choice)
-		delAcademicData(Graduate_a::aHead, Graduate_a::del_aHead);
+	while (1) {
+		Inputdata(choice, cin);
+		if (choice == 1) {
+			delAcademicData(Graduate_a::aHead, Graduate_a::del_aHead);
+			break;
+		}
+		else if (choice == 2) {
+			//待写
+			break;
+		}
+		else {
+			cout << "输入错误，请重新输入" << endl;
+		}
+	}
 }
 
 
@@ -87,68 +102,76 @@ void printData() {//menu选项4函数
 	cout << "***************************************************" << endl;
 
 	int choice;
-	cin >> choice;
-	if (choice == 1)
-	{
-		cout << "学术研究生信息如下" << endl;
-		Graduate_a* tmp = Graduate_a::aHead->pnext;
-		if (!tmp)
-			cout << "学术研究生信息为空，请先录入" << endl;
-		else
+	while (1) {
+		Inputdata(choice, cin);
+		if (choice == 1)
 		{
-			while (tmp)
+			cout << "学术研究生信息如下" << endl;
+			Graduate_a* tmp = Graduate_a::aHead->pnext;
+			if (!tmp)
+				cout << "学术研究生信息为空，请先录入" << endl;
+			else
 			{
-				cout << *tmp << endl;
-				tmp = tmp->pnext;
+				while (tmp)
+				{
+					cout << *tmp << endl;
+					tmp = tmp->pnext;
+				}
 			}
+			cout << "学术研究生信息输出完毕" << endl;
+			break;
 		}
-		cout << "学术研究生信息输出完毕" << endl;
-	}
-	else if (choice == 2)
-	{
-		cout << "工程研究生信息如下" << endl;
-		Graduate_e* tmp2 = Graduate_e::eHead->pnext;
-		if (!tmp2)
-			cout << "工程研究生信息为空，请先录入" << endl;
-		else
+		else if (choice == 2)
 		{
-			while (tmp2)
+			cout << "工程研究生信息如下" << endl;
+			Graduate_e* tmp2 = Graduate_e::eHead->pnext;
+			if (!tmp2)
+				cout << "工程研究生信息为空，请先录入" << endl;
+			else
 			{
-				cout << *tmp2 << endl;
-				tmp2 = tmp2->pnext;
+				while (tmp2)
+				{
+					cout << *tmp2 << endl;
+					tmp2 = tmp2->pnext;
+				}
 			}
+			cout << "工程研究生信息输出完毕" << endl;
+			break;
 		}
-		cout << "工程研究生信息输出完毕" << endl;
-	}
-	else
-	{
-		cout << "学术研究生信息如下" << endl;
-		Graduate_a* tmp = Graduate_a::aHead->pnext;
-		if (!tmp)
-			cout << "学术研究生信息为空，请先录入" << endl;
-		else
+		else if(choice == 3)
 		{
-			while (tmp)
+			cout << "学术研究生信息如下" << endl;
+			Graduate_a* tmp = Graduate_a::aHead->pnext;
+			if (!tmp)
+				cout << "学术研究生信息为空，请先录入" << endl;
+			else
 			{
-				cout << *tmp << endl;
-				tmp = tmp->pnext;
+				while (tmp)
+				{
+					cout << *tmp << endl;
+					tmp = tmp->pnext;
+				}
 			}
-		}
-		cout << "学术研究生信息输出完毕" << endl;
+			cout << "学术研究生信息输出完毕" << endl;
 
-		cout << "工程研究生信息如下" << endl;
-		Graduate_e* tmp2 = Graduate_e::eHead->pnext;
-		if (!tmp2)
-			cout << "工程研究生信息为空，请先录入" << endl;
-		else
-		{
-			while (tmp2)
+			cout << "工程研究生信息如下" << endl;
+			Graduate_e* tmp2 = Graduate_e::eHead->pnext;
+			if (!tmp2)
+				cout << "工程研究生信息为空，请先录入" << endl;
+			else
 			{
-				cout << *tmp2 << endl;
-				tmp2 = tmp2->pnext;
+				while (tmp2)
+				{
+					cout << *tmp2 << endl;
+					tmp2 = tmp2->pnext;
+				}
 			}
+			cout << "工程研究生信息输出完毕" << endl;
+			break;
 		}
-		cout << "工程研究生信息输出完毕" << endl;
+		else {
+			cout << "输入错误，请重新输入" << endl;
+		}
 	}
 }
 
@@ -160,21 +183,28 @@ void modifyData() {
 	cout << "*" << "                2.工程研究生信息修改             " << "*" << endl;
 	cout << "***************************************************" << endl;
 	int choice;
-	cin >> choice;
 	
-	if (choice == 1)
-	{
-		Graduate_a* tmp = seekAcademicData(Graduate_a::aHead);
-		cout << "请对该学生的信息进行修改!" << endl;
-		cin >> *tmp;
-		cout << "修改成功" << endl;
-	}
-	else
-	{
-		Graduate_e* tmp = seekEngineerData(Graduate_e::eHead);
-		cout << "请对该学生的信息进行修改!" << endl;
-		cin >> *tmp;
-		cout << "修改成功" << endl;
+	while (1) {
+		Inputdata(choice, cin);
+		if (choice == 1)
+		{
+			Graduate_a* tmp = seekAcademicData(Graduate_a::aHead);
+			cout << "请对该学生的信息进行修改!" << endl;
+			cin >> *tmp;
+			cout << "修改成功" << endl;
+			break;
+		}
+		else if(choice==2)
+		{
+			Graduate_e* tmp = seekEngineerData(Graduate_e::eHead);
+			cout << "请对该学生的信息进行修改!" << endl;
+			cin >> *tmp;
+			cout << "修改成功" << endl;
+			break;
+		}
+		else {
+			cout << "输入错误，请重新输入" << endl;
+		}
 	}
 }
 
@@ -304,28 +334,28 @@ void welcome()//欢迎界面
 	int i = 0;
 	string user;
 	string key;
-loop:
-	cout << "请输入用户名：" << endl;
-	cin >> user;
-	cout << "请输入口令：" << endl;
-	cin >> key;
-	if (!(user == "admin" && key == "admin"))
-	{
-		i++;
-		if (i >= 3)
+	while (1) {
+		cout << "请输入用户名：" << endl;
+		cin >> user;
+		cout << "请输入口令：" << endl;
+		cin >> key;
+		if (!(user == "admin" && key == "admin"))
 		{
-			cout << "您已超过输入次数，系统将自动退出！" << endl;
-			system("pause");
-			exit(0);
+			i++;
+			if (i >= 3)
+			{
+				cout << "您已超过输入次数，系统将自动退出！" << endl;
+				system("pause");
+				exit(0);
+			}
+			cout << "账户或密码输入有误！请重新输入" << endl;
 		}
-		cout << "账户或密码输入有误！请重新输入" << endl;
-		goto loop;
+		else
+		{
+			cout << "恭喜！输入正确！" << endl;
+			system("pause");
+			system("cls");
+			break;
+		}
 	}
-	else
-	{
-		cout << "恭喜！输入正确！" << endl;
-		system("pause");
-		system("cls");
-	}
-	return;
 }
