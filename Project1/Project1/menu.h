@@ -72,8 +72,78 @@ void delData() {//menu选项3函数
 }
 
 
-void printData() {
+void printData() {//menu选项4函数
+	cout << "***************************************************" << endl;
+	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
+	cout << "*" << "                1.学术研究生信息显示                " << "*" << endl;
+	cout << "*" << "                2.工程研究生信息显示                 " << "*" << endl;
+	cout << "*" << "                3.所有研究生信息显示                 " << "*" << endl;
+	cout << "****************************************************" << endl;
 
+	int choice;
+	cin >> choice;
+	if (choice == 1)
+	{
+		cout << "学术研究生信息如下" << endl;
+		Graduate_a* tmp = Graduate_a::aHead->pnext;
+		if (!tmp)
+			cout << "学术研究生信息为空，请先录入" << endl;
+		else
+		{
+			while (tmp)
+			{
+				cout << *tmp << endl;
+				tmp = tmp->pnext;
+			}
+		}
+		cout << "学术研究生信息输出完毕" << endl;
+	}
+	else if (choice == 2)
+	{
+		cout << "工程研究生信息如下" << endl;
+		Graduate_e* tmp2 = Graduate_e::eHead->pnext;
+		if (!tmp2)
+			cout << "工程研究生信息为空，请先录入" << endl;
+		else
+		{
+			while (tmp2)
+			{
+				cout << *tmp2 << endl;
+				tmp2 = tmp2->pnext;
+			}
+		}
+		cout << "工程研究生信息输出完毕" << endl;
+	}
+	else
+	{
+		cout << "学术研究生信息如下" << endl;
+		Graduate_a* tmp = Graduate_a::aHead->pnext;
+		if (!tmp)
+			cout << "学术研究生信息为空，请先录入" << endl;
+		else
+		{
+			while (tmp)
+			{
+				cout << *tmp << endl;
+				tmp = tmp->pnext;
+			}
+		}
+		cout << "学术研究生信息输出完毕" << endl;
+
+		cout << "工程研究生信息如下" << endl;
+		Graduate_e* tmp2 = Graduate_e::eHead->pnext;
+		if (!tmp2)
+			cout << "工程研究生信息为空，请先录入" << endl;
+		else
+		{
+			while (tmp2)
+			{
+				cout << *tmp2 << endl;
+				tmp2 = tmp2->pnext;
+			}
+		}
+		cout << "工程研究生信息输出完毕" << endl;
+	}
 }
 
 
@@ -123,9 +193,11 @@ void seekGraduateStudent() {
 void statisticalStudentData() {
 
 }
+
 void initSystem() {
 	system("cls");
 }
+
 void exitSystem() {
 	/*
 	cout << "从文件读入信息" << endl;
