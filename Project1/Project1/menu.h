@@ -137,8 +137,9 @@ void menu()//菜单界面
 {
 	int i = 0;
 	//初始化ehead和ahead，从dat文件读入
-	saveAcademicStudentData(Graduate_a::aHead);
-	saveEngineerStudentData(Graduate_e::eHead);
+	loadAcademicStudentData(Graduate_a::aHead);
+	loadEngineerStudentData(Graduate_e::eHead);
+
 loop:
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
@@ -155,8 +156,6 @@ loop:
 
 	cout << "请选择:" << endl;
 	cin >> i;
-
-	
 
 	switch (i)
 	{
