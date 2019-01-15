@@ -244,6 +244,7 @@ void statisticalStudentData() {
 			Graduate_e::statisticalData();
 			break;
 		case 1:case 2:case 3:
+		{
 			Graduate_a::Bsort(choice);
 			Graduate_e::Bsort(choice);
 			saveStudentData(Graduate_a::aHead);
@@ -276,6 +277,7 @@ void statisticalStudentData() {
 				}
 			}
 			cout << "工程研究生信息输出完毕" << endl;
+		}
 			break;
 		default:
 			cout << "输入错误" << endl;
