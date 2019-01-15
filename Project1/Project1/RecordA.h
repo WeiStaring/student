@@ -312,7 +312,7 @@ loop:
 void delAcademicData(Graduate_a *head, Graduate_a* del_a_Head,bool flag=0)//删除某个学术研究生数据
 {
 	apair pa;
-	pa = seekAcademicData(head);
+	pa = seekAcademicData(del_a_Head);
 	Graduate_a *p, *q;
 	p = pa.first;
 	q = pa.second;
@@ -402,7 +402,7 @@ loop:
 void delAcademicData(Graduate_e *head, Graduate_e* del_e_Head, bool flag = 0)//删除某个学术研究生数据
 {
 	epair pe;
-	pe = seekEngineerData(head);
+	pe = seekEngineerData(del_e_Head);
 	Graduate_e *p, *q;
 	p = pe.first;
 	q = pe.second;
