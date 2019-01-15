@@ -2,6 +2,7 @@
 #include<string>
 #include<string.h>
 #include<iostream>
+#include"error.h"
 using namespace std;
 
 
@@ -63,7 +64,7 @@ public:
 	friend ostream& operator<<(ostream& output, Graduate_a& a) {
 		output << "学号:" << a.num << "\t姓名:" << a.name << "\t性别:" << a.sex << endl;
 		for (int i = 0; i < a.pnum; ++i) {
-			output << "论文" << (i + 1) << "名称:" << a.p[i].name << "该论文级别:" << a.p[i].level << "\t该论文成绩:" << a.p[i].score << endl;
+			output << "论文" << (i + 1) << "名称:" << a.p[i].name << "\t该论文级别:" << a.p[i].level << "\t该论文成绩:" << a.p[i].score << endl;
 		}
 		output << "论文成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
 		return output;
@@ -86,28 +87,33 @@ public:
 			cerr << "性别输入错误，请重新输入:";
 			input >> astu.sex;
 		}
+
 		cout << "年龄:";
-		input >> astu.age;
+		Inputdata(astu.age, input);
+		while (astu.age<=0) {
+			cout << "年龄输入错误，请重新输入" << endl;
+			Inputdata(astu.age, input);
+		}
 
 		cout << "课程成绩:";
-		input >> astu.score;
+		Inputdata(astu.score, input);
 
 		while (!(astu.score >= 0 || astu.score<=100))
 		{
 			cerr << "课程成绩输入有误，请重新输入!" << endl;
-			input >> astu.score;
+			Inputdata(astu.score, input);
 		}
 
 		cout << "专业:";
 		input >> astu.major;
 
-		cout << "发表论文篇数:" << endl;
-		input >> astu.pnum;
+		cout << "发表论文篇数:";
+		Inputdata(astu.pnum, input);
 
 		while (!(astu.pnum <= 3 && astu.pnum > 0))
 		{
 			cerr << "输入有误，论文篇数范围1 - 3" << endl;
-			input >> astu.pnum;
+			Inputdata(astu.pnum, input);
 		}
 
 		for (int i = 0; i < astu.pnum; ++i) {
@@ -116,17 +122,17 @@ public:
 			input >> astu.p[i].name;
 
 			cout << "论文级别(1,2,3):";
-			input >> astu.p[i].level;
+			Inputdata(astu.p[i].level, input);
 			while (astu.p[i].level < 1 || astu.p[i].level>3) {
 				cerr << "论文级别输入错误，请重新输入:";
-				input >> astu.p[i].level;
+				Inputdata(astu.p[i].level,input);
 			}
 
 			cout << "论文分数(0-90):";
-			input >> astu.p[i].score;
+			Inputdata(astu.p[i].score, input);
 			while (astu.p[i].score < 0 || astu.p[i].score>90) {
 				cerr << "论文分数输入错误，请重新输入:";
-				input >> astu.p[i].score;
+				Inputdata(astu.p[i].score, input);
 			}
 		}
 		astu.calculatePaperScore();
@@ -191,7 +197,7 @@ public:
 	//重载函数
 	friend ostream& operator<<(ostream& output, Graduate_e& a) {
 		output << "学号:" << a.num << "\t姓名:" << a.name << "\t性别:" << a.sex << endl;
-		output << "项目名称:" << a.p.first << "项目级别" << a.p.second << endl;
+		output << "项目名称:" << a.p.first << "\t项目级别" << a.p.second << endl;
 		output << "项目成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
 		return output;
 	}
@@ -210,20 +216,22 @@ public:
 		input >> a.sex;
 
 		while (!(a.sex == 'm' || a.sex == 'f')) {
-			cerr << "性别输入错误，请重新输入:";
+			cerr << "性别输入错误，请重新输入";
 			input >> a.sex;
 		}
 
 		cout << "年龄:";
-		input >> a.age;
+		Inputdata(a.age, input);
+		while (a.age <= 0) {
+			cerr << "年龄输入错误，请重新输入" << endl;
+			Inputdata(a.age, input);
+		}
 
 		cout << "课程成绩:";
-		input >> a.score;
-
-		while (!(a.score >= 0 || a.score <= 100))
-		{
-			cerr << "课程成绩输入有误，请重新输入!" << endl;
-			input >> a.score;
+		Inputdata(a.score, input);
+		while (a.score < 0 || a.score>100) {
+			cerr << "成绩输入错误，请重新输入" << endl;
+			Inputdata(a.score, input);
 		}
 
 		cout << "领域:";
