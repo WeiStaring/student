@@ -248,6 +248,34 @@ void statisticalStudentData() {
 			Graduate_e::Bsort(choice);
 			saveStudentData(Graduate_a::aHead);
 			saveStudentData(Graduate_e::eHead);
+			cout << "排序完毕......" << endl;
+			cout << "学术研究生信息如下" << endl;
+			Graduate_a* tmp = Graduate_a::aHead->pnext;
+			if (!tmp)
+				cout << "学术研究生信息为空，请先录入" << endl;
+			else
+			{
+				while (tmp)
+				{
+					cout << *tmp << endl;
+					tmp = tmp->pnext;
+				}
+			}
+			cout << "学术研究生信息输出完毕" << endl;
+
+			cout << "工程研究生信息如下" << endl;
+			Graduate_e* tmp2 = Graduate_e::eHead->pnext;
+			if (!tmp2)
+				cout << "工程研究生信息为空，请先录入" << endl;
+			else
+			{
+				while (tmp2)
+				{
+					cout << *tmp2 << endl;
+					tmp2 = tmp2->pnext;
+				}
+			}
+			cout << "工程研究生信息输出完毕" << endl;
 			break;
 		default:
 			cout << "输入错误" << endl;
