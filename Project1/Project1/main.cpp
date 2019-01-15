@@ -1,4 +1,3 @@
-#include<iostream>
 #include"menu.h"
 #include"Student.h"
 using namespace std;
@@ -18,8 +17,9 @@ Graduate_e *Graduate_e::eHead = new Graduate_e();  //Graduate_eµÄÁ´±íÍ·½áµã£¬Í·½
 
 int main()
 {
-	welcome();
+	//welcome();
 	menu();
+
 
 	system("pause");
 	return 0;

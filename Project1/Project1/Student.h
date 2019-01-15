@@ -53,7 +53,7 @@ public:
 		pscore = s;
 		return s;
 	}
-	void Bsort(Graduate_a *head);
+	void Bsort(Graduate_a *head,int i);
 	double calculateSumScore() {
 		//计算总成绩
 		tscore = score * 0.7 + pscore * 0.3;
@@ -199,6 +199,7 @@ public:
 		output << "学号:" << a.num << "\t姓名:" << a.name << "\t性别:" << a.sex << endl;
 		output << "项目名称:" << a.p.first << "\t项目级别" << a.p.second << endl;
 		output << "项目成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
+		return output;
 	}
 
 	friend istream& operator>>(istream& input, Graduate_e& a) {

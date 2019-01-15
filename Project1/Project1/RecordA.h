@@ -52,7 +52,6 @@ void firstInputData(Graduate_e* head) {
 	}
 }
 
-
 void saveStudentData(Graduate_a* head) {
 	//建立一个txt文本文件
 	Graduate_a *p = head->pnext;
@@ -90,6 +89,45 @@ void saveStudentData(Graduate_a* head) {
 	outfiled.close();
 	return;
 }
+
+void saveStudentData(Graduate_e* head) {
+	//建立一个txt文本文件
+	Graduate_e *p = head->pnext;
+	ofstream outfile("AcademicStudentData.txt", ios::out);
+	if (!outfile)
+	{
+		cerr << "文件打开失败!" << endl;
+		cerr << "错误代码0x125158" << endl;
+		cerr << "请联系管理员处理" << endl;
+		system("pause");
+		exit(0);
+	}
+	while (p != NULL)
+	{
+		outfile << *p;
+		p = p->pnext;
+	}
+	outfile.close();
+	//建立一个dat二进制文件，方便以后读取
+	p = head->pnext;//重新赋值
+	ofstream outfiled("AcademicStudentData.dat", ios::out | ios::binary);
+	if (!outfiled)
+	{
+		cerr << "文件打开失败!" << endl;
+		cerr << "错误代码0x125158" << endl;
+		cerr << "请联系管理员处理" << endl;
+		system("pause");
+		exit(0);
+	}
+	while (p != NULL)
+	{
+		outfiled.write((char*)p, sizeof(*p));
+		p = p->pnext;
+	}
+	outfiled.close();
+	return;
+}
+
 
 //学术类研究生普通函数的定义
 Graduate_a* seekAcademicData(Graduate_a *head)//查找某个学术研究生数据
@@ -189,7 +227,6 @@ Graduate_a* inputAcademicData(Graduate_a *head)//录入学术研究生数据
 			exit(0);
 		}
 		cin >> *p;
-		p->getNum();
 		if (p->getNum() != "")
 		{
 			cout << "录入成功！" << endl;
@@ -244,14 +281,13 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 	Graduate_a *p, *q;
 	cout << "学号（1）， 姓名（2）？" << endl;
 	int i = 0;
-	for (;;) {
+	while (1) {
 		cin >> i;
-		if (!(i == 1 || i == 2))
-		{
-			cerr << "输入有误，请重新输入！" << endl;
-		}
-		break;
+		if (i == 1 || i == 2) 
+			break;
+		cout << "请正确输入" << endl;
 	}
+	
 	p = head->pnext;
 	q = head;
 	string targetNum;
@@ -259,20 +295,20 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 	switch (i)
 	{
 	case 1:
-	loopnu:
 		for (;;) {
 			cout << "请输入学号：" << endl;
 			cin >> targetNum;
+			if (targetNum == "0")
+				return NULL;
 			while (p->getNum() != targetNum)
 			{
 				q = p;
 				p = p->pnext;
 			}
 			if (p == NULL)
-			{
-				cerr << "没有这个数据！请重新输入！" << endl;
-			}
-			else break;
+				cerr << "没有这个数据！请重新输入！或者输入0退出" << endl;
+			else 
+				break;
 		}
 		break;
 	case 2:
@@ -285,18 +321,12 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 				p = p->pnext;
 			}
 			if (p == NULL)
-			{
 				cerr << "没有这个数据！请重新输入！" << endl;
-			}
-			else break;
+			else 
+				break;
 		}
 		break;
 
-	default:
-		cerr << "错误代码：0x123459！" << endl;
-		cerr << "异常错误！（请上报管理员处理）" << endl;
-		system("pause");
-		exit(0);
 	}
 	i = 0;
 	for (;;) {
@@ -318,4 +348,84 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 		}
 	}
 	return head;
+}
+
+//工程类研究生普通函数的定义
+Graduate_e* seekEngineerData(Graduate_e *head)//查找某个学术研究生数据
+{
+	if (head->pnext == NULL)//判断缓存中是否有数据
+	{
+		cerr << "错误代码：0x123458！" << endl;
+		cerr << "异常错误！（请上报管理员处理）" << endl;
+		system("pause");
+		exit(0);
+	}
+loop:
+	cout << "学号（1）， 姓名（2）？" << endl;
+	int i = 0;
+	cin >> i;
+	if (!(i == 1 || i == 2))
+	{
+		cerr << "输入有误，请重新输入！" << endl;
+		goto loop;
+	}
+	Graduate_e *p = head->pnext;
+	string targetNum;
+	string targetName;
+	switch (i)
+	{
+	case 1:
+	loopnu:
+		cout << "请输入学号：" << endl;
+		cin >> targetNum;
+		while (p->getNum() != targetNum)
+		{
+			p = p->pnext;
+		}
+		if (p == NULL)
+		{
+			cerr << "没有这个数据！请重新输入！" << endl;
+			goto loopnu;
+		}
+		return p;
+		break;
+	case 2:
+	loopna:
+		cout << "请输入姓名：" << endl;
+		cin >> targetName;
+		while (p->getName() != targetName)
+		{
+			p = p->pnext;
+		}
+		if (p == NULL)
+		{
+			cerr << "没有这个数据！请重新输入！" << endl;
+			goto loopna;
+		}
+		return p;
+		break;
+
+	default:
+		cerr << "错误代码：0x123459！" << endl;
+		cerr << "异常错误！（请上报管理员处理）" << endl;
+		system("pause");
+		exit(0);
+	}
+}
+pair<Graduate_a *, Graduate_a*> getThing(Graduate_a*head,string clue,string target, string (*fun)()) {
+	Graduate_a * p=head, *q;
+	for (;;) {
+		cout << clue << endl;
+		cin >> target;
+		while (fun() != target)
+		{
+			q = p;
+			p = p->pnext;
+		}
+		if (p == NULL)
+			cerr << "没有这个数据！请重新输入！" << endl;
+		else
+			break;
+	}
+	return { p,q };
 }

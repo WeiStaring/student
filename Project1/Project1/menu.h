@@ -3,6 +3,7 @@
 #include<cstring>
 #include<string>
 #include"RecordA.h"
+#include"FileManage.h"
 using namespace std;
 
 void addStudentData()//menu选项1对应函数
@@ -36,10 +37,25 @@ void insertData() {	//menu选项2函数
 	cout << "****************************************************" << endl;
 	int choice;
 	cin >> choice;
-	//if (choice == 1)
-		//aHead->saveAcademicStudentData();
-	//else
-		//eHead->saveEngineerStudentData();
+
+	if (choice == 1)
+	{
+		Graduate_a* tmp = new Graduate_a();
+		cout << "输入学术研究生信息" << endl;
+		cin >> *tmp;
+		tmp->pnext = Graduate_a::aHead->pnext;
+		Graduate_a::aHead->pnext = tmp;
+		saveStudentData(Graduate_a::aHead);
+	}
+	else
+	{
+		Graduate_e* tmp = new Graduate_e();
+		cout << "输入工程研究生信息" << endl;
+		cin >> *tmp;
+		tmp->pnext = Graduate_e::eHead->pnext;
+		Graduate_e::eHead->pnext = tmp;
+		saveStudentData(Graduate_e::eHead);
+	}
 }
 
 
@@ -56,11 +72,9 @@ void delData() {//menu选项3函数
 		delAcademicData(Graduate_a::aHead);
 }
 
-
 void printData() {
 
 }
-
 
 void modifyData() {
 	cout << "***************************************************" << endl;
@@ -70,8 +84,24 @@ void modifyData() {
 	cout << "****************************************************" << endl;
 	int choice;
 	cin >> choice;
-	//暂时没写if else
+	
+	if (choice == 1)
+	{
+		Graduate_a* tmp = seekAcademicData(Graduate_a::aHead);
+		cout << "请对该学生的信息进行修改!" << endl;
+		cin >> *tmp;
+		cout << "修改成功" << endl;
+	}
+	else
+	{
+		Graduate_e* tmp = seekEngineerData(Graduate_e::eHead);
+		cout << "请对该学生的信息进行修改!" << endl;
+		cin >> *tmp;
+		cout << "修改成功" << endl;
+	}
 }
+
+
 void seekGraduateStudent() {
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
@@ -96,6 +126,10 @@ void initSystem() {
 	system("cls");
 }
 void exitSystem() {
+	/*
+	cout << "从文件读入信息" << endl;
+	Graduate_a* tmp = getAcademicStudentData(Graduate_a::aHead);
+	cout << *(tmp->pnext) << endl;*/
 	system("pause");
 	exit(0);
 };
