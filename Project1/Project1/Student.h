@@ -52,7 +52,7 @@ public:
 		pscore = s;
 		return s;
 	}
-	void Bsort(Graduate_a *head);
+	void Bsort(Graduate_a *head,int i);
 	double calculateSumScore() {
 		//计算总成绩
 		tscore = score * 0.7 + pscore * 0.3;
