@@ -3,6 +3,32 @@
 #include<fstream>
 #include"Student.h"
 using namespace std;
+pair<Graduate_a *, Graduate_a*> getThing(Graduate_a*head, string clue) {
+	Graduate_a * p = head->pnext, *q;
+	if (p == 0)
+		return { 0,0 };
+	q = p;
+	string target;
+	string b;
+	
+	cout << "请输入"<<clue << endl;
+	cin >> target;
+
+	while (!p)
+	{
+		if (clue == "学号")
+			b = p->getNum();
+		else if (clue == "姓名")
+			b = p->getName();
+		if (b == target)
+			break;
+		q = p;
+		p = p->pnext;
+	}
+	if (p == NULL)
+		cerr << "没有这个数据" << endl;
+	return { p,q };
+}
 
 void firstInputData(Graduate_a* head) {
 	int flag;
@@ -128,7 +154,6 @@ void saveStudentData(Graduate_e* head) {
 	return;
 }
 
-
 //学术类研究生普通函数的定义
 Graduate_a* seekAcademicData(Graduate_a *head)//查找某个学术研究生数据
 {
@@ -154,35 +179,9 @@ loop:
 	switch (i)
 	{
 	case 1:
-	loopnu:
-		cout << "请输入学号：" << endl;
-		cin >> targetNum;
-		while (p->getNum() != targetNum)
-		{
-			p = p->pnext;
-		}
-		if (p == NULL)
-		{
-			cerr << "没有这个数据！请重新输入！" << endl;
-			goto loopnu;
-		}
-		return p;
-		break;
+		p = getThing(head, "学号").first;
 	case 2:
-	loopna:
-		cout << "请输入姓名：" << endl;
-		cin >> targetName;
-		while (p->getName() != targetName)
-		{
-			p = p->pnext;
-		}
-		if (p == NULL)
-		{
-			cerr << "没有这个数据！请重新输入！" << endl;
-			goto loopna;
-		}
-		return p;
-		break;
+		p = getThing(head, "姓名").first;
 
 	default:
 		cerr << "错误代码：0x123459！" << endl;
@@ -190,6 +189,7 @@ loop:
 		system("pause");
 		exit(0);
 	}
+	return p;
 }
 Graduate_a* inputAcademicData(Graduate_a *head)//录入学术研究生数据
 {
@@ -411,21 +411,4 @@ loop:
 		system("pause");
 		exit(0);
 	}
-}
-pair<Graduate_a *, Graduate_a*> getThing(Graduate_a*head,string clue,string target, string (*fun)()) {
-	Graduate_a * p=head, *q;
-	for (;;) {
-		cout << clue << endl;
-		cin >> target;
-		while (fun() != target)
-		{
-			q = p;
-			p = p->pnext;
-		}
-		if (p == NULL)
-			cerr << "没有这个数据！请重新输入！" << endl;
-		else
-			break;
-	}
-	return { p,q };
 }
