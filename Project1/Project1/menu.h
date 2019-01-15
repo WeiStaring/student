@@ -232,7 +232,26 @@ void statisticalStudentData() {
 }
 
 void initSystem() {
-	system("cls");
+	cout << "***************************************************" << endl;
+	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
+	cout << "*" << "            该操作将会删除所有学生信息           " << "*" << endl;
+	cout << "*" << "          并重置系统，是否仍要进行？(y/n)        " << "*" << endl;
+	cout << "***************************************************" << endl;
+
+	char c;
+	cin >> c;
+
+	if (c =='y')
+	{
+		Graduate_a * tmp1 = new Graduate_a();
+		Graduate_e * tmp2 = new Graduate_e();
+		saveStudentData(tmp1);
+		saveStudentData(tmp2);
+		cout << "已成功重置系统" << endl;
+	}
+	else
+		return;
+
 }
 
 void exitSystem() {
@@ -313,6 +332,8 @@ void menu()//菜单界面
 			break;
 		case 9:
 			initSystem();//初始化系统
+			system("pause");
+			system("cls");
 			break;
 		default:
 			cout << "输入有误，请重新输入！" << endl;
