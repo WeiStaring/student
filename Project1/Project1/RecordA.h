@@ -14,7 +14,7 @@ pair<Graduate_a *, Graduate_a*> getThing(Graduate_a*head, string clue) {
 	cout << "ÇëÊäÈë"<<clue << endl;
 	cin >> target;
 
-	while (!p)
+	while (p)
 	{
 		if (clue == "Ñ§ºÅ")
 			b = p->getNum();
