@@ -19,7 +19,7 @@ Graduate_e * Graduate_e::del_eHead = new Graduate_e();
 
 int main()
 {
-	//welcome();
+	welcome();
 	menu();
 
 

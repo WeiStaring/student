@@ -262,7 +262,6 @@ private:
 	pair<string,char> p;	//项目
 	double tscore;	//总成绩
 	double pscore;	//项目成绩
-
 };
 
 
