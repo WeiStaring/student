@@ -83,8 +83,24 @@ void modifyData() {
 	cout << "****************************************************" << endl;
 	int choice;
 	cin >> choice;
-	//暂时没写if else
+	
+	if (choice == 1)
+	{
+		Graduate_a* tmp = seekAcademicData(Graduate_a::aHead);
+		cout << "请对该学生的信息进行修改!" << endl;
+		cin >> *tmp;
+		cout << "修改成功" << endl;
+	}
+	else
+	{
+		Graduate_e* tmp = seekEngineerData(Graduate_e::eHead);
+		cout << "请对该学生的信息进行修改!" << endl;
+		cin >> *tmp;
+		cout << "修改成功" << endl;
+	}
 }
+
+
 void seekGraduateStudent() {
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
@@ -109,10 +125,10 @@ void initSystem() {
 	system("cls");
 }
 void exitSystem() {
-
+	/*
 	cout << "从文件读入信息" << endl;
 	Graduate_a* tmp = getAcademicStudentData(Graduate_a::aHead);
-	cout << *(tmp->pnext) << endl;
+	cout << *(tmp->pnext) << endl;*/
 	system("pause");
 	exit(0);
 };
@@ -136,6 +152,11 @@ loop:
 
 	cout << "请选择:" << endl;
 	cin >> i;
+
+	//初始化ehead和ahead，从dat文件读入
+	saveAcademicStudentData(Graduate_a::aHead);
+	saveEngineerStudentData(Graduate_e::eHead);
+
 	switch (i)
 	{
 	case 1:
