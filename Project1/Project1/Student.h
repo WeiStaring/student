@@ -125,7 +125,7 @@ public:
 			Inputdata(astu.p[i].level, input);
 			while (astu.p[i].level < 1 || astu.p[i].level>3) {
 				cerr << "论文级别输入错误，请重新输入:";
-				Inputdata(astu.p[i].level);
+				Inputdata(astu.p[i].level,input);
 			}
 
 			cout << "论文分数(0-90):";

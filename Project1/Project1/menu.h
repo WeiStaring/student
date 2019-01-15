@@ -4,6 +4,7 @@
 #include<string>
 #include"RecordA.h"
 #include"FileManage.h"
+#include"error.h"
 using namespace std;
 
 void addStudentData()//menu选项1对应函数
@@ -137,7 +138,7 @@ void exitSystem() {
 void menu()//菜单界面
 {
 	while (1) {
-		string i;
+		int i;
 		cout << "***************************************************" << endl;
 		cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
 		cout << "*" << "                1.研究生信息录入*                " << "*" << endl;
@@ -152,56 +153,58 @@ void menu()//菜单界面
 		cout << "****************************************************" << endl;
 
 		cout << "请选择:" << endl;
-		cin >> i;
-		if (i == "1") {
+		Inputdata(i, cin);
+		switch (i) {
+		case 1:
 			addStudentData();//信息录入
 			cout << "录入成功！" << endl;
 			system("pause");
 			system("cls");
-		}
-		else if (i == "2") {
+			break;
+		case 2:
 			insertData();//信息插入
 			cout << "插入成功！" << endl;
 			system("pause");
 			system("cls");
-		}
-		else if (i == "3") {
+			break;
+		case 3:
 			delData();//信息删除
 			cout << "删除成功！" << endl;
 			system("pause");
 			system("cls");
-		}
-		else if (i == "4") {
+			break;
+		case 4:
 			printData();//信息输出
 			cout << "输出成功！" << endl;
 			system("pause");
 			system("cls");
-		}
-		else if (i == "5") {
+			break;
+		case 5:
 			modifyData();//信息修改
 			cout << "修改成功！" << endl;
 			system("pause");
 			system("cls");
-		}
-		else if (i == "6") {
+			break;
+		case 6:
 			seekGraduateStudent();//信息查找
 			cout << "查找成功！" << endl;
 			system("pause");
 			system("cls");
-		}
-		else if (i == "7") {
+			break;
+		case 7:
 			statisticalStudentData();//信息统计
 			system("pause");
 			system("cls");
-		}
-		else if (i == "8") {
+			break;
+		case 8:
 			exitSystem();//系统退出函数
-		}
-		else if (i == "9") {
+			break;
+		case 9:
 			initSystem();//初始化系统
-		}
-		else {
+			break;
+		default:
 			cout << "输入有误，请重新输入！" << endl;
+			break;
 		}
 	}
 }
