@@ -189,7 +189,6 @@ Graduate_a* inputAcademicData(Graduate_a *head)//录入学术研究生数据
 			exit(0);
 		}
 		cin >> *p;
-		p->getNum();
 		if (p->getNum() != "")
 		{
 			cout << "录入成功！" << endl;
@@ -244,14 +243,13 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 	Graduate_a *p, *q;
 	cout << "学号（1）， 姓名（2）？" << endl;
 	int i = 0;
-	for (;;) {
+	while (1) {
 		cin >> i;
-		if (!(i == 1 || i == 2))
-		{
-			cerr << "输入有误，请重新输入！" << endl;
-		}
-		break;
+		if (i == 1 || i == 2) 
+			break;
+		cout << "请正确输入" << endl;
 	}
+	
 	p = head->pnext;
 	q = head;
 	string targetNum;
@@ -269,10 +267,9 @@ Graduate_a* delAcademicData(Graduate_a *head)//删除某个学术研究生数据
 				p = p->pnext;
 			}
 			if (p == NULL)
-			{
 				cerr << "没有这个数据！请重新输入！" << endl;
-			}
-			else break;
+			else 
+				break;
 		}
 		break;
 	case 2:

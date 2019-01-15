@@ -2,7 +2,7 @@
 #include<iostream>
 #include<fstream>
 #include"Student.h"
-#include"RecordManage.h"
+#include"RecordA.h"
 using namespace std;
 
 void saveAcademicStudentData(Graduate_a *head)//保存学术研究生数据到磁盘
@@ -53,7 +53,7 @@ loop:
 		cerr << "欢迎您第一次使用该系统，您首先要做的录入数据！" << endl;
 		cerr << "警告：如果您不是第一次使用该系统，错误代码0x125158（请联系管理员处理）" << endl;
 		firstInputData(Graduate_a::aHead);
-		saveStudentData(Graduate_e::eHead);
+		saveStudentData(Graduate_a::aHead);
 		exit(0);
 		goto loop;
 	}
