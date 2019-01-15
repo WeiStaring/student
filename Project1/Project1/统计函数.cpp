@@ -98,7 +98,7 @@ void Graduate_a::Bsort(Graduate_a *head,int i) {
 		{
 			for (pre = head_1, cur = pre->pnext, next = cur->pnext; next != end; pre = pre->pnext, cur = cur->pnext, next = next->pnext) {
 				//相邻的节点比较
-				if (strcmp(cur->getNum,next->getNum)<0) {
+				if (cur->getNum()>next->getNum()) {
 					cur->pnext = next->pnext;
 					pre->pnext = next;
 					next->pnext = cur;
@@ -114,7 +114,7 @@ void Graduate_a::Bsort(Graduate_a *head,int i) {
 		{
 			for (pre = head_1, cur = pre->pnext, next = cur->pnext; next != end; pre = pre->pnext, cur = cur->pnext, next = next->pnext) {
 				//相邻的节点比较
-				if (strcmp(cur->getName, next->getName) < 0) {
+				if (cur->getName()>next->getName()) {
 					cur->pnext = next->pnext;
 					pre->pnext = next;
 					next->pnext = cur;
@@ -125,6 +125,5 @@ void Graduate_a::Bsort(Graduate_a *head,int i) {
 			}
 			end = cur;
 		}
-		break;
 	}
 }*/
