@@ -10,7 +10,6 @@ typedef struct{
 	//学术硕士论文
 	string name;	//论文名字
 	int level;		//论文等级(1,2,3)
-	double score;		//论文成绩
 }paper;
 
 
@@ -46,9 +45,9 @@ public:
 
 	double calculatePaperScore() {
 		//计算论文分数
-		int s = 0;
+		double s = 0;
 		for (int i = 0; i < pnum; ++i) {
-			s += (p[i].level * 10 / 90) * 100;
+			s += (p[i].level * 10.0 / 90) * 100;
 		}
 		pscore = s;
 		return s;
@@ -64,9 +63,9 @@ public:
 	friend ostream& operator<<(ostream& output, Graduate_a& a) {
 		output << "学号:" << a.num << "\t姓名:" << a.name << "\t性别:" << a.sex << endl;
 		for (int i = 0; i < a.pnum; ++i) {
-			output << "论文" << (i + 1) << "名称:" << a.p[i].name << "\t该论文级别:" << a.p[i].level << "\t该论文成绩:" << a.p[i].score << endl;
+			output << "论文" << (i + 1) << "名称:" << a.p[i].name << "\t该论文级别:" << a.p[i].level << endl;
 		}
-		output << "论文成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
+		output << "论文成绩:" << a.pscore <<"\t课程成绩"<<a.score<< "\t总成绩:" << a.tscore << endl;
 		return output;
 	}
 
@@ -98,7 +97,7 @@ public:
 		cout << "课程成绩:";
 		Inputdata(astu.score, input);
 
-		while (!(astu.score >= 0 || astu.score<=100))
+		while (!(astu.score >= 0 && astu.score<=100))
 		{
 			cerr << "课程成绩输入有误，请重新输入!" << endl;
 			Inputdata(astu.score, input);
@@ -128,12 +127,6 @@ public:
 				Inputdata(astu.p[i].level,input);
 			}
 
-			cout << "论文分数(0-90):";
-			Inputdata(astu.p[i].score, input);
-			while (astu.p[i].score < 0 || astu.p[i].score>90) {
-				cerr << "论文分数输入错误，请重新输入:";
-				Inputdata(astu.p[i].score, input);
-			}
 		}
 		astu.calculatePaperScore();
 		astu.calculateSumScore();
@@ -198,7 +191,7 @@ public:
 	friend ostream& operator<<(ostream& output, Graduate_e& a) {
 		output << "学号:" << a.num << "\t姓名:" << a.name << "\t性别:" << a.sex << endl;
 		output << "项目名称:" << a.p.first << "\t项目级别" << a.p.second << endl;
-		output << "项目成绩:" << a.pscore << "\t总成绩:" << a.tscore << endl;
+		output << "项目成绩:" << a.pscore <<"\t课程成绩:"<<a.score<< "\t总成绩:" << a.tscore << endl;
 		return output;
 	}
 
