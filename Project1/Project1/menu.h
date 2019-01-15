@@ -211,6 +211,9 @@ void exitSystem() {
 
 void menu()//≤Àµ•ΩÁ√Ê
 {
+	loadEngineerStudentData(Graduate_e::eHead);
+	loadAcademicStudentData(Graduate_a::aHead);
+
 	while (1) {
 		int i;
 		cout << "***************************************************" << endl;
