@@ -264,6 +264,7 @@ void statisticalStudentData() {
 		cout << "*" << "                3.按姓名对表排序             " << "*" << endl;
 		cout << "*" << "                4.总体信息概况               " << "*" << endl;
 		cout << "*" << "                5.学生排名查询               " << "*" << endl;
+		cout << "*" << "                6.返回                       " << "*" << endl;
 		cout << "***************************************************" << endl;
 		int choice;
 		Inputdata(choice, cin);
@@ -274,6 +275,9 @@ void statisticalStudentData() {
 			break;
 		case 5:
 			Rank();
+			break;
+		case 6:
+			return;
 		case 1:case 2:case 3: {
 			Graduate_a::Bsort(choice);
 			Graduate_e::Bsort(choice);
@@ -324,22 +328,56 @@ void Rank() {
 	cout << "*" << "               1.学术研究生排名查询              " << "*" << endl;
 	cout << "*" << "               2.工程研究生排名查询              " << "*" << endl;
 	cout << "***************************************************" << endl;
-	int choice;
+	int choice,i=0;
 	for (;;) {
 		cout << "请选择：";
 		cin >> choice;
 		switch (choice)
 		{
 		case 1:
+		{
 			Graduate_a::Bsort(1);
-
+			Graduate_a *p, *cur=Graduate_a::aHead;
+			p = seekAcademicData(Graduate_a::aHead).first;
+			if (p!=NULL)
+			{
+				while (cur != NULL)
+				{
+					if (cur == p)
+					{
+						break;
+					}
+					i++;
+					cur = cur->pnext;
+				}
+			}
+			cout << "该学生排名为：" << i << endl;
 			break;
+		}
 		case 2:
-
+		{
+			Graduate_e::Bsort(1);
+			Graduate_e *p, *cur = Graduate_e::eHead;
+			p = seekEngineerData(Graduate_e::eHead).first;
+			if (p != NULL)
+			{
+				while (cur != NULL)
+				{
+					if (cur == p)
+					{
+						break;
+					}
+					i++;
+					cur = cur->pnext;
+				}
+			}
+			cout << "该学生排名为：" << i << endl;
 			break;
+		}
 		default:
 			continue;
 		}
+		break;
 	}
 }
 
