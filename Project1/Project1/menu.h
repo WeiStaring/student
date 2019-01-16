@@ -36,7 +36,6 @@ void addStudentData()//menu选项1对应函数
 	}
 }
 
-
 void insertData() {	//menu选项2函数
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
@@ -74,7 +73,6 @@ void insertData() {	//menu选项2函数
 	}
 }
 
-
 void delData() {//menu选项3函数
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
@@ -101,14 +99,12 @@ void delData() {//menu选项3函数
 	}
 }
 
-
 void printData() {//menu选项4函数
 	cout << "***************************************************" << endl;
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
 	cout << "*" << "                1.学术研究生信息显示             " << "*" << endl;
 	cout << "*" << "                2.工程研究生信息显示             " << "*" << endl;
 	cout << "*" << "                3.所有研究生信息显示             " << "*" << endl;
-	cout << "*" << "                4.返回                           " << "*" << endl;
 	cout << "***************************************************" << endl;
 
 	int choice;
@@ -179,14 +175,11 @@ void printData() {//menu选项4函数
 			cout << "工程研究生信息输出完毕" << endl;
 			break;
 		}
-		else if (choice == 4)
-			return;
 		else {
 			cout << "输入错误，请重新输入" << endl;
 		}
 	}
 }
-
 
 void modifyData() {
 	cout << "***************************************************" << endl;
@@ -220,7 +213,6 @@ void modifyData() {
 		}
 	}
 }
-
 
 void seekGraduateStudent() {
 	cout << "***************************************************" << endl;
@@ -327,6 +319,8 @@ void initSystem() {
 		Graduate_e * tmp2 = new Graduate_e();
 		saveStudentData(tmp1);
 		saveStudentData(tmp2);
+		loadAcademicStudentData(Graduate_a::aHead);
+		loadEngineerStudentData(Graduate_e::eHead);
 		cout << "已成功重置系统" << endl;
 	}
 	else
@@ -484,7 +478,6 @@ void menu()//菜单界面
 		}
 	}
 }
-
 
 void welcome()//欢迎界面
 {
