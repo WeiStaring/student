@@ -18,6 +18,7 @@ class Graduate {
 public:
 	string getNum()const { return num; }//获取学号
 	string getName()const { return name; }//获取姓名
+
 protected:
 	string num;		//学号
 	string name;	//姓名
