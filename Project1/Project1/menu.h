@@ -13,6 +13,7 @@ void addStudentData()//menu选项1对应函数
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
 	cout << "*" << "                1.学术研究生信息录入             " << "*" << endl;
 	cout << "*" << "                2.工程研究生信息录入             " << "*" << endl;
+	cout << "*" << "                3.返回                           " << "*" << endl;
 	cout << "***************************************************" << endl;
 	int choice;
 	while(1){
@@ -27,6 +28,8 @@ void addStudentData()//menu选项1对应函数
 			saveStudentData(Graduate_e::eHead);
 			break;
 		}
+		else if (choice == 3)
+			return;
 		else {
 			cout << "输入错误，请重新输入"<<endl;
 		}
@@ -39,6 +42,7 @@ void insertData() {	//menu选项2函数
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
 	cout << "*" << "                1.学术研究生信息插入             " << "*" << endl;
 	cout << "*" << "                2.工程研究生信息插入             " << "*" << endl;
+	cout << "*" << "                3.返回                           " << "*" << endl;
 	cout << "***************************************************" << endl;
 	int choice;
 	
@@ -62,6 +66,8 @@ void insertData() {	//menu选项2函数
 			saveStudentData(Graduate_e::eHead);
 			break;
 		}
+		else if (choice == 3)
+			return;
 		else {
 			cout << "输入错误，请重新输入" << endl;
 		}
@@ -74,6 +80,7 @@ void delData() {//menu选项3函数
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
 	cout << "*" << "                1.学术研究生信息删除             " << "*" << endl;
 	cout << "*" << "                2.工程研究生信息删除             " << "*" << endl;
+	cout << "*" << "                3.返回                           " << "*" << endl;
 	cout << "***************************************************" << endl;
 	int choice;
 	while (1) {
@@ -83,9 +90,11 @@ void delData() {//menu选项3函数
 			break;
 		}
 		else if (choice == 2) {
-			//待写
+			delAcademicData(Graduate_e::eHead, Graduate_e::del_eHead);
 			break;
 		}
+		else if (choice == 3)
+			return;
 		else {
 			cout << "输入错误，请重新输入" << endl;
 		}
@@ -99,6 +108,7 @@ void printData() {//menu选项4函数
 	cout << "*" << "                1.学术研究生信息显示             " << "*" << endl;
 	cout << "*" << "                2.工程研究生信息显示             " << "*" << endl;
 	cout << "*" << "                3.所有研究生信息显示             " << "*" << endl;
+	cout << "*" << "                4.返回                           " << "*" << endl;
 	cout << "***************************************************" << endl;
 
 	int choice;
@@ -138,7 +148,7 @@ void printData() {//menu选项4函数
 			cout << "工程研究生信息输出完毕" << endl;
 			break;
 		}
-		else if(choice == 3)
+		else if (choice == 3)
 		{
 			cout << "学术研究生信息如下" << endl;
 			Graduate_a* tmp = Graduate_a::aHead->pnext;
@@ -169,6 +179,8 @@ void printData() {//menu选项4函数
 			cout << "工程研究生信息输出完毕" << endl;
 			break;
 		}
+		else if (choice == 4)
+			return;
 		else {
 			cout << "输入错误，请重新输入" << endl;
 		}
@@ -181,6 +193,7 @@ void modifyData() {
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
 	cout << "*" << "                1.学术研究生信息修改             " << "*" << endl;
 	cout << "*" << "                2.工程研究生信息修改             " << "*" << endl;
+	cout << "*" << "                3.返回                           " << "*" << endl;
 	cout << "***************************************************" << endl;
 	int choice;
 	
@@ -214,16 +227,24 @@ void seekGraduateStudent() {
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
 	cout << "*" << "                1.学术研究生信息查找             " << "*" << endl;
 	cout << "*" << "                2.工程研究生信息查找             " << "*" << endl;
+	cout << "*" << "                3.返回                           " << "*" << endl;
 	cout << "***************************************************" << endl;
 	int choice;
 	cin >> choice;
-	//暂时没写if else
-	Graduate_a *p;
-	if (choice) {
+	if (choice == 1) {
+		Graduate_a *p;
 		p = seekAcademicData(Graduate_a::aHead).first;
-		if (p)
-			cout << *p;
+		if (p)cout << *p;
 	}
+	else if (choice == 2) {
+		Graduate_e *p;
+		p = seekEngineerData(Graduate_e::eHead).first;
+		if (p)cout << *p;
+	}
+	else if (choice == 3)
+		return;
+	else
+		cout << "输入错误" << endl;
 		
 }
 
@@ -235,6 +256,7 @@ void statisticalStudentData() {
 		cout << "*" << "                2.按学号对表排序             " << "*" << endl;
 		cout << "*" << "                3.按姓名对表排序             " << "*" << endl;
 		cout << "*" << "                4.总体信息概况               " << "*" << endl;
+		cout << "*" << "                5.返回                           " << "*" << endl;
 		cout << "***************************************************" << endl;
 		int choice;
 		Inputdata(choice, cin);
@@ -243,6 +265,8 @@ void statisticalStudentData() {
 			Graduate_a::statisticalData();
 			Graduate_e::statisticalData();
 			break;
+		case 5:
+			return;
 		case 1:case 2:case 3: {
 			Graduate_a::Bsort(choice);
 			Graduate_e::Bsort(choice);
@@ -278,7 +302,7 @@ void statisticalStudentData() {
 			cout << "工程研究生信息输出完毕" << endl;
 			break;
 		}
-		
+			
 		default:
 			cout << "输入错误" << endl;
 			continue;
@@ -303,8 +327,6 @@ void initSystem() {
 		Graduate_e * tmp2 = new Graduate_e();
 		saveStudentData(tmp1);
 		saveStudentData(tmp2);
-		loadAcademicStudentData(Graduate_a::aHead);
-		loadEngineerStudentData(Graduate_e::eHead);
 		cout << "已成功重置系统" << endl;
 	}
 	else
@@ -326,6 +348,7 @@ void recycle() {
 	cout << "*" << "             ****研究生管理系统****              " << "*" << endl;
 	cout << "*" << "                1.学术研究生信息回收             " << "*" << endl;
 	cout << "*" << "                2.工程研究生信息回收             " << "*" << endl;
+	cout << "*" << "                3.返回                           " << "*" << endl;
 	cout << "***************************************************" << endl;
 	int choice;
 	Inputdata(choice, cin);
@@ -339,13 +362,13 @@ void recycle() {
 			tmp = tmp->pnext;
 		}
 		cout << "信息输出完毕" << endl;
-		cout << "输入1返回，输入2删除某项，输入3恢复某项，输入4清空" << endl;
+		cout << "输入1返回，输入2恢复某项，输入3清空" << endl;
 		Inputdata(choice, cin);
 		switch (choice)
 		{
-		case 2:delAcademicData(Graduate_a::aHead, Graduate_a::del_aHead, 1); break;
-		case 3:recycleData(Graduate_a::aHead, Graduate_a::del_aHead); break;
-		case 4:deletehead(Graduate_a::del_aHead->pnext); break;
+		case 2:recycleData(Graduate_a::aHead, Graduate_a::del_aHead); break;
+		//case 3:deletehead(Graduate_a::del_aHead->pnext); break;
+		case 3:Graduate_a::del_aHead->pnext = NULL; break;
 		default:
 			break;
 		}
@@ -359,16 +382,18 @@ void recycle() {
 			tmp = tmp->pnext;
 		}
 		cout << "信息输出完毕" << endl;
-		cout << "输入1返回，输入2删除某项，输入3清空" << endl;
+		cout << "输入1返回，输入2恢复某项，输入3清空" << endl;
 		Inputdata(choice, cin);
 		switch (choice)
 		{
-		case 2:delAcademicData(Graduate_e::eHead, Graduate_e::del_eHead, 1); break;
+		case 2:recycleData(Graduate_e::eHead, Graduate_e::del_eHead); break;
 		case 3:deletehead(Graduate_e::del_eHead->pnext); break;
 		default:
 			break;
 		}
 	}
+	else if (choice == 3)
+		return;
 	else
 	{
 		cout << "输入错误"<<endl;
@@ -450,6 +475,8 @@ void menu()//菜单界面
 			break;
 		case 10:
 			recycle();
+			system("pause");
+			system("cls");
 			break;
 		default:
 			cout << "输入有误，请重新输入！" << endl;

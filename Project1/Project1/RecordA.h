@@ -58,6 +58,8 @@ epair getThing(Graduate_e*head, string clue) {
 	return { p,q };
 }
 void deletehead(Graduate_a * head) {
+	if (!head)
+		return;
 	Graduate_a *tempptr;
 	while (head->pnext != NULL)
 	{
@@ -66,8 +68,11 @@ void deletehead(Graduate_a * head) {
 		head = tempptr;
 	}
 	delete head;
+	head = NULL;
 }
 void deletehead(Graduate_e * head) {
+	if (!head)
+		return;
 	Graduate_e *tempptr;
 	while (head->pnext != NULL)
 	{
@@ -333,14 +338,18 @@ void delAcademicData(Graduate_a *head, Graduate_a* del_a_Head,bool flag=0)//É¾³ý
 		if (i == 1)
 		{
 			cout << "Ñ¡ÔñÂß¼­É¾³ý1»òÎïÀíÉ¾³ý2" << endl;
-			cin >> i;
-			q->pnext = p->pnext;
+			cin >> i;			
 			if (i == 1) {
+				q->pnext = p->pnext;
 				p->pnext = del_a_Head->pnext;
 				del_a_Head->pnext = p;
 			}
-			else
-				delete p;
+			else if(i==2){
+				q->pnext = p->pnext;
+				//delete p;
+				p = NULL;
+				saveStudentData(Graduate_a::aHead);
+			}
 			break;
 		}
 		else if (i == 2)
@@ -429,8 +438,11 @@ void delAcademicData(Graduate_e *head, Graduate_e* del_e_Head, bool flag = 0)//É
 				p->pnext = del_e_Head->pnext;
 				del_e_Head->pnext = p;
 			}
-			else
-				delete p;
+			else {
+				saveStudentData(Graduate_e::eHead);
+				//delete p;
+			}
+				
 			break;
 		}
 		else if (i == 2)
