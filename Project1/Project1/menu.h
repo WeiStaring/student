@@ -7,6 +7,7 @@
 #include"error.h"
 using namespace std;
 
+void Rank();
 void addStudentData()//menu选项1对应函数
 {
 	cout << "***************************************************" << endl;
@@ -235,6 +236,7 @@ void statisticalStudentData() {
 		cout << "*" << "                2.按学号对表排序             " << "*" << endl;
 		cout << "*" << "                3.按姓名对表排序             " << "*" << endl;
 		cout << "*" << "                4.总体信息概况               " << "*" << endl;
+		cout << "*" << "                5.学生排名查询               " << "*" << endl;
 		cout << "***************************************************" << endl;
 		int choice;
 		Inputdata(choice, cin);
@@ -243,6 +245,8 @@ void statisticalStudentData() {
 			Graduate_a::statisticalData();
 			Graduate_e::statisticalData();
 			break;
+		case 5:
+			Rank();
 		case 1:case 2:case 3: {
 			Graduate_a::Bsort(choice);
 			Graduate_e::Bsort(choice);
@@ -284,6 +288,31 @@ void statisticalStudentData() {
 			continue;
 		}
 		break;
+	}
+}
+
+void Rank() {
+	cout << "***************************************************" << endl;
+	cout << "*" << "              ****研究生排名查询****             " << "*" << endl;
+	cout << "*" << "               1.学术研究生排名查询              " << "*" << endl;
+	cout << "*" << "               2.工程研究生排名查询              " << "*" << endl;
+	cout << "***************************************************" << endl;
+	int choice;
+	for (;;) {
+		cout << "请选择：";
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			Graduate_a::Bsort(1);
+
+			break;
+		case 2:
+
+			break;
+		default:
+			continue;
+		}
 	}
 }
 

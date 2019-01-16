@@ -101,7 +101,7 @@ void Graduate_e::statisticalData() {
 	}
 	averageEngineeringScore = (double)((sumEngineeringScore)*1.0 / countEngineeringNumber);
 	//统计完毕,开始输出相关信息
-	cout << "学术硕士总人数为：" << countEngineeringNumber << endl;
+	cout << "工程硕士总人数为：" << countEngineeringNumber << endl;
 	cout << "其中他们的平均分为：" << averageEngineeringScore << endl;
 	cout << "成绩分布为：" << endl;
 	cout << "100分人数为：" <<e[0] << "\t占总人数百分比为：" << 100 * (double)(e[0] * 1.0 / countEngineeringNumber) << "%" << endl;
