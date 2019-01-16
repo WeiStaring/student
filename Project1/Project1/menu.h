@@ -343,10 +343,8 @@ void initSystem() {
 }
 
 void exitSystem() {
-	/*
-	cout << "从文件读入信息" << endl;
-	Graduate_a* tmp = getAcademicStudentData(Graduate_a::aHead);
-	cout << *(tmp->pnext) << endl;*/
+	saveStudentData(Graduate_a::aHead);
+	saveStudentData(Graduate_e::eHead);
 	system("pause");
 	exit(0);
 };
