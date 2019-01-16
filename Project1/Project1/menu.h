@@ -243,7 +243,7 @@ void statisticalStudentData() {
 			Graduate_a::statisticalData();
 			Graduate_e::statisticalData();
 			break;
-		case 1:case 2:case 3:
+		case 1:case 2:case 3: {
 			Graduate_a::Bsort(choice);
 			Graduate_e::Bsort(choice);
 			saveStudentData(Graduate_a::aHead);
@@ -277,6 +277,8 @@ void statisticalStudentData() {
 			}
 			cout << "工程研究生信息输出完毕" << endl;
 			break;
+		}
+		
 		default:
 			cout << "输入错误" << endl;
 			continue;
@@ -301,6 +303,8 @@ void initSystem() {
 		Graduate_e * tmp2 = new Graduate_e();
 		saveStudentData(tmp1);
 		saveStudentData(tmp2);
+		loadAcademicStudentData(Graduate_a::aHead);
+		loadEngineerStudentData(Graduate_e::eHead);
 		cout << "已成功重置系统" << endl;
 	}
 	else
